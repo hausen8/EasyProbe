@@ -39,4 +39,4 @@ MDI_COMMAND =
 ...
 ```
 
-*Note: MDI commands are called from the hal file in the order they are listed in the ini file. So either make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal*
+*Note: MDI commands are called from the hal file in the order they are listed in the ini file. So make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal*
