@@ -13,12 +13,13 @@ PYVCP = Probe_panel.xml
 ```
 Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between the comments "Beginning of probe/ccordinates tab" and "End of probe/ccordinates tab" to your panel and add a Name to the names tag.
 
+
 ```
 [HAL]
 POSTGUI_HALFILE = Probe_postgui.hal
 ```
+LinuxCNC allows not more than one postgui hal file called from the ini file. If you already have a postgui hal file, you may copy all content from the Probe_postgui.hal to your postgui hal file.
 
-*Note: LinuxCNC allows not more than one postgui hal file called from the ini file. If you already have a postgui hal file, you may copy all content from the Probe_postgui.hal to your postgui hal file.*
 
 ```
 [HALUI]
