@@ -2,7 +2,7 @@
 
 Probe_panel is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, a postgui halfile for the pins and a folder with some macros, it should work regardless of the LinuxCNC version.
 
-### Installing Probe_panel
+### 1) Installing Probe_panel
 
 First copy the macro folder, Probe_panel.xml and Probe_postgui.hal to your configuration folder
 Then add the following lines to the appropriate sections of your machine ini file:
@@ -40,3 +40,8 @@ MDI_COMMAND =
 ```
 
 *Note: MDI commands are called from the hal file in the order they are listed in the ini file. So make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal*
+
+### 2) Fine tuning Probe_panel
+
+Though your Probe_panel should basically work at this point, there are some things to optimize in your machine hal file:
+
