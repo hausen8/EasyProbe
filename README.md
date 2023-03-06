@@ -2,24 +2,30 @@
 
 Probe_panel is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, a postgui halfile for the pins and a folder with some macros, it should work regardless of the LinuxCNC version.
 
-### 1) Installing Probe_panel
+### 1) Copy files
 
-First copy the macro folder, Probe_panel.xml and Probe_postgui.hal to your configuration folder
-Then add the following lines to the appropriate sections of your machine ini file:
+Copy all content to your machine configuration folder (typically under USERNAME/Linuxcnc/config/machine:
+- sub folder with all ngc files
+- Probe_panel.xml
+- Probe_postgui.hal
+
+### 2) Edit your INI
+
+Add the following lines to the appropriate sections of your machine ini file:
 
 ```
 [DISPLAY]
 PYVCP = Probe_panel.xml
 ```
-Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between the comments "Beginning of probe/ccordinates tab" and "End of probe/ccordinates tab" to your panel and add a Name to the names tag.
 
+*Note: Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between the comments "Beginning of probe/ccordinates tab" and "End of probe/ccordinates tab" to your panel and add a Name to the names tag.*
 
 ```
 [HAL]
 POSTGUI_HALFILE = Probe_postgui.hal
 ```
-LinuxCNC allows not more than one postgui hal file called from the ini file. If you already have a postgui hal file, you may copy all content from the Probe_postgui.hal to your postgui hal file.
 
+*Note: LinuxCNC allows not more than one postgui hal file called from the ini file. If you already have a postgui hal file, you may copy all content from the Probe_postgui.hal to your postgui hal file.*
 
 ```
 [HALUI]
@@ -41,7 +47,14 @@ MDI_COMMAND =
 
 *Note: MDI commands are called from the hal file in the order they are listed in the ini file. So make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal*
 
-### 2) Fine tuning Probe_panel
+### 3) Edit your HAL
 
-Though your Probe_panel should basically work at this point, there are some things to optimize in your machine hal file:
+Though your Probe_panel should basically work at this point, there are some things to optimize in your hal configuration:
 
+```
+# net    probe_in    PHYSICAL PROBE PIN    =>
+# net    probe_in    motion.probe-input    <=
+# net    probe-in    pyvcp.probe_led       <=
+```
+
+*pyvcp.probe_led is the rectangular LED inside your Probe_panel. I you want the LED to work, uncomment this line in Probe_postgui.hal and hook probe-in to *
