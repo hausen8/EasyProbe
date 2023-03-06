@@ -3,7 +3,7 @@
 <pyvcp>
     <tabs>
         <names>["Coord/Probe"]</names>
-        <!-- Coordinates and probe tab -->
+        <!-- Coordinates tab -->
         <vbox>
             <hbox>
                 <button width="5" text="G54" halpin="g54" disable_pin="true" />
@@ -45,7 +45,7 @@
             </hbox>
             <hbox>
                 <button width="2" height="2" padx="10" text="←X" halpin="probe_minus_x" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="  ⃝" halpin="probe_hole" disable_pin="true" />
+                <button width="2" height="2" padx="10" text="O" halpin="probe_hole" disable_pin="true" />
                 <button width="2" height="2" padx="10" text="X→" halpin="probe_x" disable_pin="true" />
             </hbox>
             <hbox>

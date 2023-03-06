@@ -20,37 +20,37 @@ net pyvcp-p0y0				halui.mdi-command-10		<=	pyvcp.p0y0
 net pyvcp-p0z0				halui.mdi-command-11		<=	pyvcp.p0z0
 
 net pyvcp-probe-x			halui.mdi-command-12		<=	pyvcp.probe_x
-net pyvcp-probe-minus-x		halui.mdi-command-13		<=	pyvcp.probe_minus_x
+net pyvcp-probe-minus-x			halui.mdi-command-13		<=	pyvcp.probe_minus_x
 net pyvcp-probe-y			halui.mdi-command-14		<=	pyvcp.probe_y
-net pyvcp-probe-minus-y		halui.mdi-command-15		<=	pyvcp.probe_minus_y
-net pyvcp-probe-minus-z		halui.mdi-command-16		<=	pyvcp.probe_minus_z
-net pyvcp-probe-hole		halui.mdi-command-17		<=	pyvcp.probe_hole
-net pyvcp-probe-calibration	halui.mdi-command-18		<=	pyvcp.probe_calib
+net pyvcp-probe-minus-y			halui.mdi-command-15		<=	pyvcp.probe_minus_y
+net pyvcp-probe-minus-z			halui.mdi-command-16		<=	pyvcp.probe_minus_z
+net pyvcp-probe-hole			halui.mdi-command-17		<=	pyvcp.probe_hole
+net pyvcp-probe-calibration		halui.mdi-command-18		<=	pyvcp.probe_calib
 
 
 
 # Spinboxes for probe diameter and zero/offset
 
 net probe_diameter			pyvcp.probe_diameter		=>
-net probe_offset			pyvcp.probe_offset			=>
+net probe_offset			pyvcp.probe_offset		=>
 
 
 
 # Use disable_panel to disable all buttons (see readme.md)
 
-net disable_panel			pyvcp.g54.disable			<=
-net disable_panel			pyvcp.g55.disable			<=
-net disable_panel			pyvcp.g56.disable			<=
-net disable_panel			pyvcp.g57.disable			<=
-net disable_panel			pyvcp.g58.disable			<=
-net disable_panel			pyvcp.g59.disable			<=
-net disable_panel			pyvcp.g591.disable			<=
-net disable_panel			pyvcp.g592.disable			<=
-net disable_panel			pyvcp.g593.disable			<=
+net disable_panel			pyvcp.g54.disable		<=
+net disable_panel			pyvcp.g55.disable		<=
+net disable_panel			pyvcp.g56.disable		<=
+net disable_panel			pyvcp.g57.disable		<=
+net disable_panel			pyvcp.g58.disable		<=
+net disable_panel			pyvcp.g59.disable		<=
+net disable_panel			pyvcp.g591.disable		<=
+net disable_panel			pyvcp.g592.disable		<=
+net disable_panel			pyvcp.g593.disable		<=
 
-net disable_panel			pyvcp.p0x0.disable			<=
-net disable_panel			pyvcp.p0y0.disable			<=
-net disable_panel			pyvcp.p0z0.disable			<=
+net disable_panel			pyvcp.p0x0.disable		<=
+net disable_panel			pyvcp.p0y0.disable		<=
+net disable_panel			pyvcp.p0z0.disable		<=
 
 net disable_panel			pyvcp.probe_x.disable		<=
 net disable_panel			pyvcp.probe_minus_x.disable	<=
@@ -63,13 +63,13 @@ net disable_panel			pyvcp.probe_hole.disable	<=
 
 # Chechbox for enabling calibration button
 
-net activate_calib			pyvcp.act_calib				=>	pyvcp.probe_calib.disable
+net activate_calib			pyvcp.act_calib			=>	pyvcp.probe_calib.disable
 
 
 
 # LED control for probe signal (see readme.md)
 
-# net probe-in				probe_led					<=
+# net probe-in				probe_led			<=
 
 
 
