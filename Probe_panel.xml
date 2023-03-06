@@ -3,7 +3,7 @@
 <pyvcp>
     <tabs>
         <names>["Coord/Probe"]</names>
-        <!-- Coordinates tab -->
+        <!-- Coordinates and probe tab -->
         <vbox>
             <hbox>
                 <button width="5" text="G54" halpin="g54" disable_pin="true" />
@@ -28,16 +28,16 @@
             </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
-			    <label text="Diameter" width="10" />
+		<label text="Diameter" width="10" />
                 <spinbox width="10" min_="0" max_="100" initval="25" param_pin="1" format="2.3f" halpin="probe_diameter" />
-			    <label text="mm" />
+		<label text="mm" />
             </hbox>
             <label font="Helvetica, 1" text=" " />
             <hbox>
-			    <label text="Zero/Offset" width="10" />
+		<label text="Zero/Offset" width="10" />
                 <spinbox width="10" min_="-1000" max_="1000" initval="0" param_pin="1" format="2.3f" halpin="probe_offset" />
-			    <label text="mm" />
-			</hbox>
+		<label text="mm" />
+	    </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
                 <button width="2" height="2" padx="10" text="" halpin="blank_1" relief="flat" disable_pin="true" />
@@ -61,9 +61,9 @@
             </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
-			    <label text="Probe Signal" padx="13" />
+		<label text="Probe Signal" padx="13" />
                 <rectled width="25" height="25" on_color="#80b000" off_color="#ff3000" halpin="probe_led" />
-			</hbox>
+	    </hbox>
         </vbox>
     </tabs>
 </pyvcp>
