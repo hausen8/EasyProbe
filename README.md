@@ -4,9 +4,8 @@ Probe_panel is a simple probe add-in for the LinuxCNC Axis UI. Since it is not m
 
 ### Installing Probe_panel
 
-1) copy the macro folder, Probe_panel.xml and Probe_postgui.hal to your configuration folder
-
-2) Add the following lines to the appropriate sections of your machine ini file:
+First copy the macro folder, Probe_panel.xml and Probe_postgui.hal to your configuration folder
+Then add the following lines to the appropriate sections of your machine ini file:
 
 [DISPLAY]
 PYVCP = Probe_panel.xml
