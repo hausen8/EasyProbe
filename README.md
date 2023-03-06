@@ -12,7 +12,7 @@ Then add the following lines to the appropriate sections of your machine ini fil
 PYVCP = Probe_panel.xml
 ```
 
-*Note: Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between <!-- Beginning of probe/ccordinates tab --> and <!-- End of probe/ccordinates tab --> to your panel.*
+*Note: Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between the comments "Beginning of probe/ccordinates tab" and "End of probe/ccordinates tab" to your panel.*
 
 ```
 [HAL]
