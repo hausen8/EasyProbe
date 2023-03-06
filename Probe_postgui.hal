@@ -67,9 +67,11 @@ net activate_calib			pyvcp.act_calib			=>	pyvcp.probe_calib.disable
 
 
 
-# LED control for probe signal (see readme.md)
+# Probe signal and LED control (see readme.md)
 
-# net probe-in				probe_led			<=
+net probe_in				PHYSICAL_PROBE_PIN		=>
+net probe_in				motion.probe-input		<=
+net probe-in				pyvcp.probe_led			<=
 
 
 
