@@ -38,3 +38,5 @@ MDI_COMMAND = G10 L20 P0 Z0
 MDI_COMMAND = 
 ...
 ```
+
+*Note: MDI commands are called from the hal file in the order they are listed in the ini file. So either make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal*
