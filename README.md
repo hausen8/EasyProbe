@@ -49,12 +49,12 @@ MDI_COMMAND =
 
 ### 3) Edit your HAL
 
-Though your Probe_panel should basically work at this point, there are some things to optimize in your hal configuration:
+Open your Probe_postgui.hal or the postgui hal file where you added the content of Probe_postgui.hal and find the following lines:
 
 ```
-# net    probe_in    PHYSICAL PROBE PIN    =>
-# net    probe_in    motion.probe-input    <=
-# net    probe-in    pyvcp.probe_led       <=
+net    probe_in    PHYSICAL_PROBE_PIN    =>
+net    probe_in    motion.probe-input    <=
+net    probe-in    pyvcp.probe_led       <=
 ```
 
-*pyvcp.probe_led is the rectangular LED inside your Probe_panel. I you want the LED to work, uncomment this line in Probe_postgui.hal and hook probe-in to *
+*"PHYSICAL_PROBE_PIN" must be exchanged to the physical pin where your probe tool is connected to. In case of a Mesa 7i76e it should be something like hm2_7i76e.0.7i76.0.0.input-NN, where NN is the number of the input.*
