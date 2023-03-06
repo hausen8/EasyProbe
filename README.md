@@ -11,7 +11,7 @@ Probe_panel is a simple probe add-in for the LinuxCNC Axis UI. Since it is not m
 [DISPLAY]
 PYVCP = Probe_panel.xml
 
-*Note: Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between <!-- Beginning of probe/ccordinates tab --> and <!-- End of probe/ccordinates tab --> to your panel.
+*Note: Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between <!-- Beginning of probe/ccordinates tab --> and <!-- End of probe/ccordinates tab --> to your panel.*
 
 [HAL]
 POSTGUI_HALFILE = Probe_postgui.hal
