@@ -3,28 +3,28 @@
 <pyvcp>
     <tabs>
         <names>["Coord/Probe"]</names>
-        <!-- Beginning of probe/coordinates tab -->
+        <!-- Coordinates tab -->
         <vbox>
             <hbox>
-                <button width="5" text="G54" halpin="g54" disable_pin="true" />
-                <button width="5" text="G55" halpin="g55" disable_pin="true" />
-                <button width="5" text="G56" halpin="g56" disable_pin="true" />
+                <button width="5" text="G54" halpin="g54" />
+                <button width="5" text="G55" halpin="g55" />
+                <button width="5" text="G56" halpin="g56" />
             </hbox>
             <hbox>
-                <button width="5" text="G57" halpin="g57" disable_pin="true" />
-                <button width="5" text="G58" halpin="g58" disable_pin="true" />
-                <button width="5" text="G59" halpin="g59" disable_pin="true" />
+                <button width="5" text="G57" halpin="g57" />
+                <button width="5" text="G58" halpin="g58" />
+                <button width="5" text="G59" halpin="g59" />
             </hbox>
             <hbox>
-                <button width="5" text="G59.1" halpin="g591" disable_pin="true" />
-                <button width="5" text="G59.2" halpin="g592" disable_pin="true" />
-                <button width="5" text="G59.3" halpin="g593" disable_pin="true" />
+                <button width="5" text="G59.1" halpin="g591" />
+                <button width="5" text="G59.2" halpin="g592" />
+                <button width="5" text="G59.3" halpin="g593" />
             </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
-                <button width="5" text="P0 X0" halpin="p0x0" disable_pin="true" />
-                <button width="5" text="P0 Y0" halpin="p0y0" disable_pin="true" />
-                <button width="5" text="P0 Z0" halpin="p0z0" disable_pin="true" />
+                <button width="5" text="P0 X0" halpin="p0x0" />
+                <button width="5" text="P0 Y0" halpin="p0y0" />
+                <button width="5" text="P0 Z0" halpin="p0z0" />
             </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
@@ -41,18 +41,18 @@
             <label font="Helvetica, 12" text=" " />
             <hbox>
                 <button width="2" height="2" padx="10" text="" halpin="blank_1" relief="flat" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="Y↑" halpin="probe_y" disable_pin="true" />
+                <button width="2" height="2" padx="10" text="Y↑" halpin="probe_y" />
             </hbox>
             <hbox>
-                <button width="2" height="2" padx="10" text="←X" halpin="probe_minus_x" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="O" halpin="probe_hole" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="X→" halpin="probe_x" disable_pin="true" />
+                <button width="2" height="2" padx="10" text="←X" halpin="probe_minus_x" />
+                <button width="2" height="2" padx="10" text="O" halpin="probe_hole" />
+                <button width="2" height="2" padx="10" text="X→" halpin="probe_x" />
             </hbox>
             <hbox>
                 <button width="2" height="2" padx="10" text="" halpin="blank_2" relief="flat" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="Y↓" halpin="probe_minus_y" disable_pin="true" />
+                <button width="2" height="2" padx="10" text="Y↓" halpin="probe_minus_y" />
                 <button width="3" height="2" padx="23" text="" halpin="blank_3" relief="flat" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="-Z" halpin="probe_minus_z" disable_pin="true" />
+                <button width="2" height="2" padx="10" text="-Z" halpin="probe_minus_z" />
             </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
@@ -65,7 +65,6 @@
                 <rectled width="25" height="25" on_color="#80b000" off_color="#ff3000" halpin="probe_led" />
 	    </hbox>
         </vbox>
-        <!-- End of probe/coordinates tab -->
     </tabs>
 </pyvcp>
 

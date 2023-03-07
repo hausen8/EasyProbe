@@ -37,29 +37,6 @@ net probe_diameter		pyvcp.probe_diameter		=>
 net probe_offset		pyvcp.probe_offset		=>
 
 
-# Use disable_panel to disable all buttons (see readme.md)
-net disable_panel		pyvcp.g54.disable		<=
-net disable_panel		pyvcp.g55.disable		<=
-net disable_panel		pyvcp.g56.disable		<=
-net disable_panel		pyvcp.g57.disable		<=
-net disable_panel		pyvcp.g58.disable		<=
-net disable_panel		pyvcp.g59.disable		<=
-net disable_panel		pyvcp.g591.disable		<=
-net disable_panel		pyvcp.g592.disable		<=
-net disable_panel		pyvcp.g593.disable		<=
-
-net disable_panel		pyvcp.p0x0.disable		<=
-net disable_panel		pyvcp.p0y0.disable		<=
-net disable_panel		pyvcp.p0z0.disable		<=
-
-net disable_panel		pyvcp.probe_x.disable		<=
-net disable_panel		pyvcp.probe_minus_x.disable	<=
-net disable_panel		pyvcp.probe_y.disable		<=
-net disable_panel		pyvcp.probe_minus_y.disable	<=
-net disable_panel		pyvcp.probe_minus_z.disable	<=
-net disable_panel		pyvcp.probe_hole.disable	<=
-
-
 # Chechbox for enabling calibration button
 net activate_calib		pyvcp.act_calib			=>	pyvcp.probe_calib.disable
 
