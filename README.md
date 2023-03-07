@@ -41,8 +41,13 @@ MDI_COMMAND = G59.3
 MDI_COMMAND = G10 L20 P0 X0
 MDI_COMMAND = G10 L20 P0 Y0
 MDI_COMMAND = G10 L20 P0 Z0
-MDI_COMMAND = 
-...
+MDI_COMMAND = O <probe_x_plus>				CALL	[#<_ini[probe]PROBE_TOOL_NUMBER>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]PROBE_SLOW_FR>][#<_ini[probe]PROBE_FAST_FR>][#<_ini[probe]CALIBRATION_OFFSET>]
+MDI_COMMAND = O <probe_x_minus> 			CALL	[#<_ini[probe]PROBE_TOOL_NUMBER>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]PROBE_SLOW_FR>][#<_ini[probe]PROBE_FAST_FR>][#<_ini[probe]CALIBRATION_OFFSET>]
+MDI_COMMAND = O <probe_y_plus> 				CALL	[#<_ini[probe]PROBE_TOOL_NUMBER>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]PROBE_SLOW_FR>][#<_ini[probe]PROBE_FAST_FR>][#<_ini[probe]CALIBRATION_OFFSET>]
+MDI_COMMAND = O <probe_y_minus>				CALL	[#<_ini[probe]PROBE_TOOL_NUMBER>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]PROBE_SLOW_FR>][#<_ini[probe]PROBE_FAST_FR>][#<_ini[probe]CALIBRATION_OFFSET>]
+MDI_COMMAND = O <probe_z_minus>				CALL	[#<_ini[probe]PROBE_TOOL_NUMBER>][#<_ini[probe]MAX_Z_DISTANCE>][#<_ini[probe]Z_CLEARANCE>][#<_ini[probe]PROBE_SLOW_FR>][#<_ini[probe]PROBE_FAST_FR>]
+MDI_COMMAND = O <probe_round_pocket_center_start>	CALL	[#<_ini[probe]PROBE_TOOL_NUMBER>][#<_ini[probe]MAX_Z_DISTANCE>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]Z_CLEARANCE>][#<_ini[probe]FAST_VEL_IN_BETWEEN>] [#<_ini[probe]PROBE_SLOW_FR>][#<_ini[probe]PROBE_FAST_FR>][#<_ini[probe]CALIBRATION_OFFSET>]
+MDI_COMMAND = O <probe_calibration>			CALL
 ```
 
 *Note: MDI commands are called from the hal file in the order they are listed in the ini file. So make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal. Please note that numbers start at 00.*
