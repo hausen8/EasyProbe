@@ -58,3 +58,12 @@ net    probe-in    pyvcp.probe_led       <=
 ```
 
 *"PHYSICAL_PROBE_PIN" must be exchanged to the physical pin where your probe tool is connected to. In case of a Mesa 7i76e it should be something like hm2_7i76e.0.7i76.0.0.input-NN, where NN is the number of the input.*
+
+```
+net    disable_panel    pyvcp.g54.disable    <=
+net    disable_panel    pyvcp.g55.disable    <=
+net    disable_panel    pyvcp.g56.disable    <=
+...
+```
+
+*All buttons in the panel have disable pins which are connected to a signal named "disable_panel". You may want to disable all buttons under certain conditions. This could be a machine state like halui.machine.is-on which needs to be inverted with a NOT hal component (since we want the buttons to be disabled when the machine is NOT on) or any other conditions.*
