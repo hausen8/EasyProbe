@@ -64,26 +64,26 @@ MDI_COMMAND = O <probe_calibration>			CALL
 
 ```
 [PROBE]
-# Define the lowest and highest toolnumber of your different probes in your tooltable. If you only have one probe, set both equal
+# Lowest and highest tool number of your different probes in your tool table. If you only have one probe, set both equal
 TOOL_NUMBER_MIN = 95
 TOOL_NUMBER_MAX = 99
 
-# Define yor maximum safetytravel of your probe in xy direction. Value is given by the manufacturer. In doubt set it to approx. 3 mm.
+# Maximum safety travel of your probe in X/Y direction. Value is given by the manufacturer. If in doubt, set it to ~3 mm.
 MAX_XY_DISTANCE = 3
 
-# Define the distance the probe will jump back after the fast probe. In doubt try settings between 0.5 and 2 mm.
+# Distance the probe will bounce back after fast probe. Recommended value between 0.5 and 2 mm.
 XY_CLEARANCE = 0.5
 
-# Define yor maximum safetytravel of your probe in z direction. Value is given by the manufacturer. In doubt set it to approx. 2 mm.
+# Maximum safety travel of your probe in z direction. Value is given by the manufacturer. If in doubt, set it to ~2 mm.
 MAX_Z_DISTANCE = 2
 
-# Define the distance the probe will jump back after the fast probe. In doubt try settings between 0.5 and 2 mm.
+# Distance the probe will bounce back after fast probe. Recommended value between 0.5 and 2 mm.
 Z_CLEARANCE = 0.5
 
-# Define your fast probe velocity. Be aware to not set it to high, otherwise you will not have enough time in case of a malefunction. In doubt try settings between 50 and 500 mm per min.
+# Fast probe velocity. Be aware to not set it too high, otherwise you will not have enough time in case of a malefunction. Recommended value between 50 and 500 mm per min.
 VEL_FAST = 500
 
-# Define your slow probe velocity. This value is important for the overall accuracy. In doubt try settings between 10 and 50 mm per min.
+# Slow probe velocity. This value is important for the overall accuracy. Recommended value between 10 and 50 mm per min.
 VEL_SLOW = 20
 ```
 
