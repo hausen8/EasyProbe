@@ -64,7 +64,7 @@ MDI_COMMAND = O <probe_calibration>			CALL
 
 ```
 [PROBE]
-# Lowest and highest tool number of your different probes in your tool table. If you only have one probe, set both equal
+# Lowest and highest tool number of different probe tips in your tool table. If you only have one probe tip, set both equal.
 TOOL_NUMBER_MIN = 95
 TOOL_NUMBER_MAX = 99
 
