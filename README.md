@@ -4,7 +4,7 @@ Probe_panel is a simple probe add-in for the LinuxCNC Axis UI. Since it is not m
 
 ### 1) Copy files
 
-Copy the following content to your machine configuration folder (typically under USERNAME/Linuxcnc/config/machine):
+Copy the following content to your machine configuration folder (typically under USERNAME/Linuxcnc/configs/CONFIG_NAME):
 - sub folder with all ngc files
 - Probe_panel.xml
 - Probe_postgui.hal
