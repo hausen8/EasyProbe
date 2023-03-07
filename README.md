@@ -15,25 +15,27 @@ Add the following lines to the appropriate sections of your machine ini file:
 
 ```
 [DISPLAY]
-# If you want to add Prbe_panel as a new tab to your existing panel, see http://linuxcnc.org/docs/html/gui/pyvcp.html#_containers for details
 PYVCP = Probe_panel.xml
 ```
 
+*Note: Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between the comments "Beginning of probe/coordinates tab" and "End of probe/coordinates tab" to your panel and add a name to the names tag.*
+
 ```
 [RS274NGC]
-# Path to the directory where your macros are stored
 SUBROUTINE_PATH = macros
 FEATURES = 12
 INI_VARS = 1
 HAL_PIN_VARS = 1
 ```
 
+*Note: SUBROUTINE_PATH ist the path to your probe macros folder. If you rename the folder or move it i.e. to nc_file/macros, you have to enter the right path here.*
+
 ```
 [HAL]
-# LinuxCNC allows not more than one postgui hal file called from the ini file.
-# If you already have a postgui hal file, copy all content from the Probe_postgui.hal to your postgui hal file.
 POSTGUI_HALFILE = Probe_postgui.hal
 ```
+
+*Note: LinuxCNC allows not more than one postgui hal file called from the ini file. If you already have a postgui hal file, copy all content from the Probe_postgui.hal to your postgui.hal.*
 
 ```
 [HALUI]
