@@ -5,7 +5,7 @@ Probe_panel is a simple probe add-in for the LinuxCNC Axis UI. Since it is not m
 ### 1) Installing Probe_panel
 
 Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME):
-- sub folder with all ngc files
+- macros folder with all ngc files
 - Probe_panel.xml
 - Probe_postgui.hal
 
@@ -19,6 +19,16 @@ PYVCP = Probe_panel.xml
 ```
 
 *Note: Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between the comments "Beginning of probe/coordinates tab" and "End of probe/coordinates tab" to your panel and add a name to the names tag.*
+
+```
+[RS274NGC]
+SUBROUTINE_PATH = macros
+FEATURES = 12
+INI_VARS = 1
+HAL_PIN_VARS = 1
+```
+
+*Note: SUBROUTINE_PATH ist the path to your probe macros folder. If you rename the folder or move it i.e. to nc_file/macros, you have to enter the right path here.*
 
 ```
 [HAL]
