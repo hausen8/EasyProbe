@@ -57,6 +57,6 @@ net    probe_in    motion.probe-input    <=
 net    probe-in    pyvcp.probe_led       <=
 ```
 
-*"PHYSICAL_PROBE_PIN" must be exchanged to the physical pin where your probe tool is connected to. In case of a Mesa 7i76e it should be something like hm2_7i76e.0.7i76.0.0.input-NN, where NN is the number of the input.*
+*"PHYSICAL_PROBE_PIN" must be exchanged to the physical pin of your interface card where your probe tool is connected to. In case of a Mesa 7i76e it should be something like hm2_7i76e.0.7i76.0.0.input-NN, where NN is the number of the input.*
 
 
