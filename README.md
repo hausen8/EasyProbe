@@ -47,7 +47,7 @@ MDI_COMMAND =
 
 *Note: MDI commands are called from the hal file in the order they are listed in the ini file. So make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal. Please note that numbers start at 00.*
 
-### 3) Edit your HAL
+### 3) Edit your POSTGUI HAL
 
 Open your Probe_postgui.hal or the postgui hal file where you added the content of Probe_postgui.hal and find the following lines:
 
