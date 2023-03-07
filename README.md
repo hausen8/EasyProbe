@@ -62,6 +62,21 @@ MDI_COMMAND = O <probe_calibration>			CALL
 
 *Note: MDI commands are called from the hal file in the order they are listed in the ini file. So make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal. Please note that numbers start at 00.*
 
+```
+[PROBE]
+PROBE_TOOL_NUMBER = 99
+TOOL_NUMBER_MIN = 95
+TOOL_NUMBER_MAX = 99
+MAX_XY_DISTANCE = 3
+XY_CLEARANCE = 1
+CALIBRATION_OFFSET = 0
+MAX_Z_DISTANCE = 3
+Z_CLEARANCE = 1
+PROBE_SLOW_FR = 10
+PROBE_FAST_FR = 50
+FAST_VEL_IN_BETWEEN = 300
+```
+
 ### 3) Edit your POSTGUI HAL
 
 Open your Probe_postgui.hal or the postgui hal file where you added the content of Probe_postgui.hal and find the following lines:
