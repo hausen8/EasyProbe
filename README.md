@@ -24,6 +24,7 @@ PYVCP = Probe_panel.xml
 
 ```
 [RS274NGC]
+# SUBROUTINE_PATH should point to the directory where your macros are stored.
 SUBROUTINE_PATH = macros
 FEATURES = 12
 INI_VARS = 1
