@@ -15,6 +15,8 @@ Add the following lines to the appropriate sections of your machine ini file:
 
 ```
 [DISPLAY]
+# Load the Probe_panel as side panel or copy its content as a new tab to your existing side panel.
+# See http://linuxcnc.org/docs/html/gui/pyvcp.html#_containers for details
 PYVCP = Probe_panel.xml
 ```
 
