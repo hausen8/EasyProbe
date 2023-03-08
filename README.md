@@ -86,7 +86,7 @@ MAX_Z_DISTANCE = 2
 Z_CLEARANCE = 0.5
 
 # Fast probe velocity. Be aware to not set it too high, otherwise you will not have enough time in case of a malefunction. Recommended values between 50 and 500 mm per min.
-VEL_FAST = 500
+VEL_FAST = 200
 
 # Slow probe velocity. This value is important for the overall accuracy. Recommended values between 10 and 50 mm per min.
 VEL_SLOW = 20
