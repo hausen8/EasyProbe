@@ -5,16 +5,16 @@
 
 # ---------- Load realtime components for Probe_panel ----------
 
-loadrt	dbounce			names=dbounce_probe
-loadrt	lut5			names=lut_act_panel
-loadrt	not				names=not_disabled,not_act_cal
-loadrt	or2				names=or_act_cal
+loadrt	dbounce		names=dbounce_probe
+loadrt	lut5		names=lut_act_panel
+loadrt	not		names=not_disabled,not_act_cal
+loadrt	or2		names=or_act_cal
 
 addf	dbounce_probe	servo-thread
 addf	lut_act_panel	servo-thread
 addf	not_disabled	servo-thread
-addf	not_act_cal		servo-thread
-addf	or_act_cal		servo-thread
+addf	not_act_cal	servo-thread
+addf	or_act_cal	servo-thread
 
 
 
