@@ -89,6 +89,9 @@ VEL_FAST = 500
 
 # Slow probe velocity. This value is important for the overall accuracy. Recommended values between 10 and 50 mm per min.
 VEL_SLOW = 20
+
+# Delay time in ms for debouncing probe switch. Try to keep the value as low as possible. Recommended values between 2 and 20 ms.
+DEBOUNCE_TIME = 10
 ```
 
 ### 3) Edit your POSTGUI HAL
