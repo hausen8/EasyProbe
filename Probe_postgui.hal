@@ -7,10 +7,10 @@
 
 setp	dbounce_probe.delay		[PROBE]DEBOUNCE_TIME
 
-net	probe_raw			dbounce_probe.in		<=		#PHYSICAL_PROBE_PIN
-net	probe_signal			dbounce_probe.out		=>
-net	probe_signal			motion.probe-input		<=
-net	probe-signal			pyvcp.probe_led			<=
+net		probe_raw				dbounce_probe.in		<=		#PHYSICAL_PROBE_PIN
+net		probe_signal			dbounce_probe.out		=>
+net		probe_signal			motion.probe-input		<=
+net		probe-signal			pyvcp.probe_led			<=
 
 
 
