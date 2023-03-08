@@ -76,13 +76,13 @@ TOOL_NUMBER_MAX = 99
 # Maximum safety travel of your probe in X/Y direction. Value is given by the manufacturer. If in doubt, set it to ~3 mm.
 MAX_XY_DISTANCE = 3
 
-# Distance the probe will bounce back after fast probe. Recommended values between 0.5 and 2 mm.
+# Distance the probe will move back after fast probe. Recommended values between 0.5 and 2 mm.
 XY_CLEARANCE = 0.5
 
 # Maximum safety travel of your probe in z direction. Value is given by the manufacturer. If in doubt, set it to ~2 mm.
 MAX_Z_DISTANCE = 2
 
-# Distance the probe will bounce back after fast probe. Recommended values between 0.5 and 2 mm.
+# Distance the probe will move back after fast probe. Recommended values between 0.5 and 2 mm.
 Z_CLEARANCE = 0.5
 
 # Fast probe velocity. Be aware to not set it too high, otherwise you will not have enough time in case of a malefunction. Recommended values between 50 and 500 mm per min.
