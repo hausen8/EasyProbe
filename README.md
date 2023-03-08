@@ -32,8 +32,12 @@ HAL_PIN_VARS = 1
 
 ```
 [HAL]
+TWOPASS = on,verbose
+HALFILE = Probe_preload.hal
 POSTGUI_HALFILE = Probe_postgui.hal
 ```
+
+*Note: When TWOPASS is activated, realtime components can not only be loaded in the main hal file but in any other hal file, too. This allows us to offer a hal file with all required realtime components for Probe_panel so there is no need for you to touch your machine hal file.
 
 *Note: LinuxCNC allows not more than one postgui hal file called from the ini file. If you already have a postgui hal file, copy all content from the Probe_postgui.hal to your postgui.hal.*
 
