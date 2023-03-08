@@ -8,6 +8,7 @@ Copy the following content to your machine configuration folder (typically under
 - macros folder with all ngc files
 - Probe_panel.xml
 - Probe_postgui.hal
+- Probe_preload.hal
 
 ### 2) Edit your INI
 
