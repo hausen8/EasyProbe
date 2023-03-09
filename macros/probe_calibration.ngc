@@ -1,0 +1,68 @@
+(author: Julian Koenig)
+(version: 1.0)
+(date: 03/09/23)
+
+
+o<probe_calibration> sub
+
+  (1. find Center; 2. turn spindle 180 degrees; 3. find center again)
+  #<tool_number_min>	= #<_ini[probe]TOOL_NUMBER_MIN>
+  #<tool_number_max>	= #<_ini[probe]TOOL_NUMBER_MAX>
+  #<ref_diameter> 	= #<_hal[pyvcp.probe_diameter]> 
+
+
+  (Cancel G92 offsets)
+  G92.1
+
+  (Probe Tool Safety Check)
+  o100 if [[#5400 GT #<tool_number_max>] OR [#5400 LT #<tool_number_min>]]
+      (MSG, No specified probe tool in spindle, aborting)
+      o<probe_x_minus> return
+  o100 endif
+
+
+
+  (Set tooloffsets #5401 to #5409 to zero)
+  G10 L1 P#5400 X0 Y0 Z0 A0 B0 C0 U0 V0 W0
+
+
+  (Call sub "probe_pocket" with setting WC0 to zero to find center position)
+  o<probe_pocket> call [0]
+  #<x_probed_width_1> 	= #1001
+  #<y_probed_width_1> 	= #1003
+
+
+  (MSG, Please turn spindle 180 degrees and resume.)
+  M0
+
+
+
+  (Call sub "probe_pocket" without setting WC0 to zero to find center position)
+  o<probe_pocket> call [1]
+  #<x_probed_width_2> 	= #1001
+  #<y_probed_width_2> 	= #1003
+
+
+
+
+  (Calculation of probe offsets and probe_ranges)
+  #<probe_range_x> = #<ref_diameter> - [[#<x_probed_width_1> + #<x_probed_width_2>] / 2]
+  #<probe_range_y> = #<ref_diameter> - [[#<y_probed_width_1> + #<y_probed_width_2>] / 2]
+
+  #<x_offset> = #<_x> / 2
+  #<y_offset> = #<_y> / 2
+
+ 
+  (Set tooloffsets #5401 to #5409 to calculated values)
+  G10 L1 P#5400 X#<x_offset> Y#<y_offset> Z0 A0 B0 C0 U#<probe_range_x> V#<probe_range_y> W0
+
+  #<probe_trigger_runout> = SQRT[#<x_offset> * #<y_offset>]
+
+  (debug, Probe triggermidpoint runout: #<probe_trigger_runout>)
+  o110 if [#<probe_trigger_runout> GT 0.10]
+      (MSG, Triggermiddlepoint runout is greater then 0.1mm. Manually adjustment recommended.)
+      o<probe_calibration> return
+  o110 endif
+  
+
+o<probe_calibration> endsub
