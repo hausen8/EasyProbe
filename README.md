@@ -101,7 +101,7 @@ VEL_FAST = 200
 # Slow probe velocity. This value is important for the overall accuracy. Recommended values between 10 and 50 mm per min.
 VEL_SLOW = 20
 
-# Define your fast forward velocity in between pocket probe movements without actual probing.
+# Fast forward velocity in between pocket probe movements without actual probing.
 VEL_FF = 2000
 
 # Time delay in ms for debouncing probe switch. Try to keep the value as low as possible. Recommended values between 2 and 20 ms.
