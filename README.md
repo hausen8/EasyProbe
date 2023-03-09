@@ -25,6 +25,7 @@ PYVCP = Probe_panel.xml
 [RS274NGC]
 SUBROUTINE_PATH = macros
 FEATURES = 12
+RETAIN_G43 = 0
 INI_VARS = 1
 HAL_PIN_VARS = 1
 ```
@@ -56,13 +57,13 @@ MDI_COMMAND = G59.3
 MDI_COMMAND = G10 L20 P0 X0
 MDI_COMMAND = G10 L20 P0 Y0
 MDI_COMMAND = G10 L20 P0 Z0
-MDI_COMMAND = O <probe_x_plus>                       CALL	[#<_ini[probe]TOOL_NUMBER_MIN>][#<_ini[probe]TOOL_NUMBER_MAX>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]VEL_SLOW>][#<_ini[probe]VEL_FAST>]
-MDI_COMMAND = O <probe_x_minus>                      CALL	[#<_ini[probe]TOOL_NUMBER_MIN>][#<_ini[probe]TOOL_NUMBER_MAX>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]VEL_SLOW>][#<_ini[probe]VEL_FAST>]
-MDI_COMMAND = O <probe_y_plus>                       CALL	[#<_ini[probe]TOOL_NUMBER_MIN>][#<_ini[probe]TOOL_NUMBER_MAX>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]VEL_SLOW>][#<_ini[probe]VEL_FAST>]
-MDI_COMMAND = O <probe_y_minus>                      CALL	[#<_ini[probe]TOOL_NUMBER_MIN>][#<_ini[probe]TOOL_NUMBER_MAX>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]VEL_SLOW>][#<_ini[probe]VEL_FAST>]
-MDI_COMMAND = O <probe_z_minus>                      CALL	[#<_ini[probe]TOOL_NUMBER_MIN>][#<_ini[probe]TOOL_NUMBER_MAX>][#<_ini[probe]MAX_Z_DISTANCE>][#<_ini[probe]Z_CLEARANCE>][#<_ini[probe]VEL_SLOW>][#<_ini[probe]VEL_FAST>]
-MDI_COMMAND = O <probe_round_pocket_center_start>    CALL	[#<_ini[probe]TOOL_NUMBER_MIN>][#<_ini[probe]TOOL_NUMBER_MAX>][#<_ini[probe]MAX_XY_DISTANCE>][#<_ini[probe]XY_CLEARANCE>][#<_ini[probe]VEL_SLOW>][#<_ini[probe]VEL_FAST>]
-MDI_COMMAND = O <probe_calibration>                  CALL
+MDI_COMMAND = O <probe_x_plus>      CALL
+MDI_COMMAND = O <probe_x_minus>     CALL
+MDI_COMMAND = O <probe_y_plus>      CALL
+MDI_COMMAND = O <probe_y_minus>     CALL
+MDI_COMMAND = O <probe_z_minus>     CALL	
+MDI_COMMAND = O <probe_pocket>      CALL	
+MDI_COMMAND = O <probe_calibration> CALL
 ```
 
 *Note: MDI commands are called from the hal file in the order they are listed in the ini file. So make sure that these MDI commands are either the first or only MDI commands or change the numbers in Probe_postgui.hal. Please note that numbers start at 00.*
@@ -90,6 +91,9 @@ VEL_FAST = 200
 
 # Slow probe velocity. This value is important for the overall accuracy. Recommended values between 10 and 50 mm per min.
 VEL_SLOW = 20
+
+# Define your fast forward velocity in between pocket probe movements without actual probing.
+VEL_FF = 2000
 
 # Time delay in ms for debouncing probe switch. Try to keep the value as low as possible. Recommended values between 2 and 20 ms.
 DEBOUNCE_TIME = 10
