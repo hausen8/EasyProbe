@@ -1,96 +1,96 @@
 # Probe_postgui.hal for Probe_panel
-# Last Edited: 23-03-08
+# Last Edited: 23-03-09
 
 
 
 # ---------- Probe signal and LED control (see readme.md) ----------
 
-setp    dbounce_probe.delay     [PROBE]DEBOUNCE_TIME
+setp    dbounce_probe.delay       [PROBE]DEBOUNCE_TIME
 
-net     probe_raw               dbounce_probe.in        <=      #PHYSICAL_PROBE_PIN
-net     probe_signal            dbounce_probe.out       =>
-net     probe_signal            motion.probe-input      <=
-net     probe-signal            pyvcp.probe_led         <=
+net     probe_raw                 dbounce_probe.in            <=    #PHYSICAL_PROBE_PIN
+net     probe_signal              dbounce_probe.out           =>
+net     probe_signal              motion.probe-input          <=
+net     probe-signal              pyvcp.probe_led             <=
 
 
 
 # ---------- Buttons connected to mdi-commands ----------
 
-net     pyvcp-g54           halui.mdi-command-00        <=      pyvcp.g54
-net     pyvcp-g55           halui.mdi-command-01        <=      pyvcp.g55
-net pyvcp-g56           halui.mdi-command-02        <=      pyvcp.g56
-net pyvcp-g57           halui.mdi-command-03        <=      pyvcp.g57
-net pyvcp-g58           halui.mdi-command-04        <=      pyvcp.g58
-net pyvcp-g59           halui.mdi-command-05        <=      pyvcp.g59
-net pyvcp-g59.1         halui.mdi-command-06        <=      pyvcp.g591
-net pyvcp-g59.2         halui.mdi-command-07        <=      pyvcp.g592
-net pyvcp-g59.3         halui.mdi-command-08        <=      pyvcp.g593
+net     pyvcp-g54                 halui.mdi-command-00        <=    pyvcp.g54
+net     pyvcp-g55                 halui.mdi-command-01        <=    pyvcp.g55
+net     pyvcp-g56                 halui.mdi-command-02        <=    pyvcp.g56
+net     pyvcp-g57                 halui.mdi-command-03        <=    pyvcp.g57
+net     pyvcp-g58                 halui.mdi-command-04        <=    pyvcp.g58
+net     pyvcp-g59                 halui.mdi-command-05        <=    pyvcp.g59
+net     pyvcp-g59.1               halui.mdi-command-06        <=    pyvcp.g591
+net     pyvcp-g59.2               halui.mdi-command-07        <=    pyvcp.g592
+net     pyvcp-g59.3               halui.mdi-command-08        <=    pyvcp.g593
 
-net pyvcp-p0x0          halui.mdi-command-09        <=      pyvcp.p0x0
-net pyvcp-p0y0          halui.mdi-command-10        <=      pyvcp.p0y0
-net pyvcp-p0z0          halui.mdi-command-11        <=      pyvcp.p0z0
+net     pyvcp-p0x0                halui.mdi-command-09        <=    pyvcp.p0x0
+net     pyvcp-p0y0                halui.mdi-command-10        <=    pyvcp.p0y0
+net     pyvcp-p0z0                halui.mdi-command-11        <=    pyvcp.p0z0
 
-net pyvcp-probe-x           halui.mdi-command-12        <=      pyvcp.probe_x
-net pyvcp-probe-minus-x     halui.mdi-command-13        <=      pyvcp.probe_minus_x
-net pyvcp-probe-y           halui.mdi-command-14        <=      pyvcp.probe_y
-net pyvcp-probe-minus-y     halui.mdi-command-15        <=      pyvcp.probe_minus_y
-net pyvcp-probe-minus-z     halui.mdi-command-16        <=      pyvcp.probe_minus_z
-net pyvcp-probe-hole        halui.mdi-command-17        <=      pyvcp.probe_hole
-net pyvcp-probe-calibration     halui.mdi-command-18        <=      pyvcp.probe_calib
+net     pyvcp-probe-x             halui.mdi-command-12        <=    pyvcp.probe_x
+net     pyvcp-probe-minus-x       halui.mdi-command-13        <=    pyvcp.probe_minus_x
+net     pyvcp-probe-y             halui.mdi-command-14        <=    pyvcp.probe_y
+net     pyvcp-probe-minus-y       halui.mdi-command-15        <=    pyvcp.probe_minus_y
+net     pyvcp-probe-minus-z       halui.mdi-command-16        <=    pyvcp.probe_minus_z
+net     pyvcp-probe-pocket        halui.mdi-command-17        <=    pyvcp.probe_pocket
+net     pyvcp-probe-calibration   halui.mdi-command-18        <=    pyvcp.probe_calib
 
 
 
 # ---------- Disable-Pins for Buttons ----------
 
-setp    lut_act_panel.function  0x8
+setp    lut_act_panel.function    0x8
 
-net machine-is-on           lut_act_panel.in-0      <=      halui.machine.is-on
-net program-is-running      lut_act_panel.in-1      <=      halui.program.is-idle
-net not-disabled            lut_act_panel.out       =>      not_disabled.in
+net     machine-is-on             lut_act_panel.in-0          <=    halui.machine.is-on
+net     program-is-running        lut_act_panel.in-1          <=    halui.program.is-idle
+net     not-disabled              lut_act_panel.out           =>    not_disabled.in
 
-net disable-panel           not_disabled.out        =>
-net disable-panel           pyvcp.g54.disable       <=
-net disable-panel           pyvcp.g55.disable       <=
-net disable-panel           pyvcp.g56.disable       <=
-net disable-panel           pyvcp.g57.disable       <=
-net disable-panel           pyvcp.g58.disable       <=
-net disable-panel           pyvcp.g59.disable       <=
-net disable-panel           pyvcp.g591.disable      <=
-net disable-panel           pyvcp.g592.disable      <=
-net disable-panel           pyvcp.g593.disable      <=
-net disable-panel           pyvcp.p0x0.disable      <=
-net disable-panel           pyvcp.p0y0.disable      <=
-net disable-panel           pyvcp.p0z0.disable      <=
-net disable-panel           pyvcp.probe_x.disable       <=
-net disable-panel           pyvcp.probe_minus_x.disable <=
-net disable-panel           pyvcp.probe_y.disable       <=
-net disable-panel           pyvcp.probe_minus_y.disable <=
-net disable-panel           pyvcp.probe_minus_z.disable <=
-net disable-panel           pyvcp.probe_hole.disable    <=
-net disable-panel           or_act_cal.in0          <=
+net     disable-panel             not_disabled.out            =>
+net     disable-panel             pyvcp.g54.disable           <=
+net     disable-panel             pyvcp.g55.disable           <=
+net     disable-panel             pyvcp.g56.disable           <=
+net     disable-panel             pyvcp.g57.disable           <=
+net     disable-panel             pyvcp.g58.disable           <=
+net     disable-panel             pyvcp.g59.disable           <=
+net     disable-panel             pyvcp.g591.disable          <=
+net     disable-panel             pyvcp.g592.disable          <=
+net     disable-panel             pyvcp.g593.disable          <=
+net     disable-panel             pyvcp.p0x0.disable          <=
+net     disable-panel             pyvcp.p0y0.disable          <=
+net     disable-panel             pyvcp.p0z0.disable          <=
+net     disable-panel             pyvcp.probe_x.disable       <=
+net     disable-panel             pyvcp.probe_minus_x.disable <=
+net     disable-panel             pyvcp.probe_y.disable       <=
+net     disable-panel             pyvcp.probe_minus_y.disable <=
+net     disable-panel             pyvcp.probe_minus_z.disable <=
+net     disable-panel             pyvcp.probe_hole.disable    <=
+net     disable-panel             or_act_cal.in0              <=
 
 
 
 # ---------- Spinboxes for probe diameter and zero/offset ----------
 
-net probe_diameter          pyvcp.probe_diameter        =>
-net probe_offset            pyvcp.probe_offset      =>
+net     probe_diameter            pyvcp.probe_diameter        =>
+net     probe_offset              pyvcp.probe_offset          =>
 
 
 
 # ---------- Enable control for calibration button ----------
 
-net active_check            pyvcp.act_calib         =>      not_act_cal.in
-net invert_check            or_act_cal.in1          <=      not_act_cal.out
-net active_calib            or_act_cal.out          =>      pyvcp.probe_calib.disable
+net     active_check              pyvcp.act_calib             =>    not_act_cal.in
+net     invert_check              or_act_cal.in1              <=    not_act_cal.out
+net     active_calib              or_act_cal.out              =>    pyvcp.probe_calib.disable
 
 
 
 # ---------- Disable invisible buttons that keep probe buttons in a grid ----------
 
-setp    pyvcp.blank_1.disable       1
-setp    pyvcp.blank_2.disable       1
-setp    pyvcp.blank_3.disable       1
+setp    pyvcp.blank_1.disable     1
+setp    pyvcp.blank_2.disable     1
+setp    pyvcp.blank_3.disable     1
 
 
 
