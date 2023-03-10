@@ -9,7 +9,6 @@ Copy the following content to your machine configuration folder (typically under
   - on_abort.ngc
   - probe_calibration.ngc
   - probe_pocket.ngc
-  - probe_test.ngc
   - probe_x_minus.ngc
   - probe_x_plus.ngc
   - probe_y_minus.ngc
