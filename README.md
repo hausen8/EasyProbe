@@ -42,7 +42,7 @@ HAL_PIN_VARS = 1
 
 ```
 [HAL]
-TWOPASS = on,verbose
+TWOPASS = on
 HALFILE = Probe_preload.hal
 POSTGUI_HALFILE = Probe_postgui.hal
 ```
@@ -65,6 +65,9 @@ MDI_COMMAND = G59.3
 MDI_COMMAND = G10 L20 P0 X0
 MDI_COMMAND = G10 L20 P0 Y0
 MDI_COMMAND = G10 L20 P0 Z0
+MDI_COMMAND = O <probe_toolchange>	CALL
+MDI_COMMAND = O <probe_toolchange>	CALL
+MDI_COMMAND = O <probe_toolchange>	CALL
 MDI_COMMAND = O <probe_x_plus>      CALL
 MDI_COMMAND = O <probe_x_minus>     CALL
 MDI_COMMAND = O <probe_y_plus>      CALL
