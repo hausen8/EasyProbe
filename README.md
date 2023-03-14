@@ -81,9 +81,10 @@ MDI_COMMAND = O <probe_calibration> CALL
 
 ```
 [PROBE]
-# Lowest and highest tool number of different probe tips in your tool table. If you only have one probe tip, set both equal.
-TOOL_NUMBER_MIN = 95
-TOOL_NUMBER_MAX = 99
+# Define up to three tool numbers of different probes in your tool table. Set the unused numbers to zero
+TOOL_NUMBER_1 = 99
+TOOL_NUMBER_2 = 0
+TOOL_NUMBER_3 = 0
 
 # Maximum safety travel of your probe in X/Y direction. Value is given by the manufacturer. If in doubt, set it to ~3 mm.
 MAX_XY_DISTANCE = 3
@@ -105,6 +106,9 @@ VEL_SLOW = 20
 
 # Fast forward velocity in between pocket probe movements without actual probing.
 VEL_FF = 2000
+
+# Additional probetrips will lead to a better calibration. Values between 0 and 5.
+ADD_PROBETRIPS = 2
 
 # Time delay in ms for debouncing probe switch. Try to keep the value as low as possible. Recommended values between 2 and 20 ms.
 DEBOUNCE_TIME = 10
