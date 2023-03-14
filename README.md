@@ -110,6 +110,9 @@ VEL_FF = 2000
 # Additional probetrips will lead to a better calibration. Values between 0 and 5.
 ADD_PROBETRIPS = 2
 
+# For development, debug messages can be turned on
+DEV_MSG = 0
+
 # Time delay in ms for debouncing probe switch. Try to keep the value as low as possible. Recommended values between 2 and 20 ms.
 DEBOUNCE_TIME = 10
 ```
