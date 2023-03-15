@@ -28,7 +28,7 @@ Add the following lines to the appropriate sections of your machine ini file:
 PYVCP = Probe_panel.xml
 ```
 
-*Note: Probe_panel is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between the comments "Beginning of probe/coordinates tab" and "End of probe/coordinates tab" to your panel and add a name to the names tag.*
+*Note: [easy]probe is designed as a tab of a side panel. If you already have a PyVCP side panel, simply copy all the lines between the comments "Beginning of probe/coordinates tab" and "End of probe/coordinates tab" to your panel and add a name to the names tag.*
 
 ```
 [RS274NGC]
