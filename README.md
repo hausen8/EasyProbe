@@ -129,15 +129,14 @@ net   probe_signal    motion.probe-input    <=
 net   probe-signal    pyvcp.probe_led       <=
 ```
 
-*#PHYSICAL_PROBE_PIN must be exchanged to the physical pin of your interface card where your probe tool is connected to. In case of a Mesa 7i76e it should be something like hm2_7i76e.0.7i76.0.0.input-NN, where NN is the number of the input.*
+#PHYSICAL_PROBE_PIN must be exchanged to the physical pin of your interface card where your probe tool is connected to. In case of a Mesa 7i76e it should be something like hm2_7i76e.0.7i76.0.0.input-NN, where NN is the number of the input.
 
 ### 4) Edit your TOOL TABLE
 
-Open your tool.tbl file and add an entry for each probe tool. You have to enter at least the tool number, pocket number and tip diameter.
+Open your tool.tbl file and add an entry for each probe tool. You have to enter at least the tool number, pocket number and tip diameter. The sample below shows a tool with tool number 99, pocket number 99 and a 2m diameter.
 
 ```
 T99 P99 D2 ;
 ```
-*The sample below shows a tool with tool number 99, pocket number 99 and a 2m diameter.*
 
 
