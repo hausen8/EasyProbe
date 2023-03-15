@@ -1,4 +1,4 @@
-(author: Julian Koenig; Originally by Chris P (Probe Basic))
+(author: Julian Koenig; Originally by Chris P - Probe Basic)
 (version: 1.0)
 (date: 03/09/23)
 
@@ -8,20 +8,18 @@
 
 o<probe_x_minus> sub
 
-  #<xy_clearance> 		= #<_ini[probe]XY_CLEARANCE> + #1
-  #<probe_mode>			= #2 	(0 for setting WC0; 1 for not setting WC0) 
-  (#<number_of_probes>		= #3)
-  #<tool_number_min>		= #<_ini[probe]TOOL_NUMBER_MIN>
-  #<tool_number_max>		= #<_ini[probe]TOOL_NUMBER_MAX>
-  #<max_xy_distance> 		= #<_ini[probe]MAX_XY_DISTANCE>
-  #<probe_slow_fr> 		= #<_ini[probe]VEL_SLOW>
-  #<probe_fast_fr> 		= #<_ini[probe]VEL_FAST>
+  #<xy_clearance> 			= #<_ini[probe]XY_CLEARANCE>
+  #<probe_mode>				= #2 	(0 for setting WC0; 1 for not setting WC0) 
+  #<add_probetrips>		= #3 (0 or not defined means one trip)
+  #<tool_number_1>			= #<_ini[probe]TOOL_NUMBER_1>
+  #<tool_number_2>			= #<_ini[probe]TOOL_NUMBER_2>
+  #<tool_number_3>			= #<_ini[probe]TOOL_NUMBER_3>
+  #<max_xy_distance> 		= [#<_ini[probe]MAX_XY_DISTANCE> + #1]
+  #<probe_slow_fr> 			= #<_ini[probe]VEL_SLOW>
+  #<probe_fast_fr> 			= #<_ini[probe]VEL_FAST>
+  #<dev_msg>				= #<_ini[probe]DEV_MSG>
+  #<no_msg>					= #4
   
-  #<x_offset>			= #5401
-  #<probe_range_x>		= #5407
-  #<probe_center_offset>	= #<x_offset> - [#<probe_range_x> / 2]
-
-
   (Cancel G92 offsets)
   G92.1
 
@@ -29,11 +27,33 @@ o<probe_x_minus> sub
 
 
   (Probe Tool Safety Check)
-  o100 if [[#5400 GT #<tool_number_max>] OR [#5400 LT #<tool_number_min>]]
+  o100 if [#5400 EQ 0]
       (MSG, No specified probe tool in spindle, aborting)
       o<probe_x_minus> return
-  o100 endif
+  
+  o100 elseif [[#5400 EQ #<tool_number_1>] OR [#5400 EQ #<tool_number_2>] OR [#5400 EQ #<tool_number_3>]]
+  
+    #<internal_tool_number>	= 1
+  o101 if [#5400 EQ #<tool_number_2>] 
+    #<internal_tool_number>	= 2
+  o101 elseif [#5400 EQ #<tool_number_3>]
+    #<internal_tool_number>	= 3
+  o101 endif
+  
+  o102 if [#5410 EQ 0]
+      (MSG, No tipdiameter specified. Please enter tipdiameter to tooltable, aborting)
+      o<probe_calibration> return
+  o102 endif
 
+  #<x_offset>				= #5401
+  #<y_offset>				= #5402
+  #<tip_diameter>			= #5410
+  #<probe_range_x>			= #5411
+  #<probe_range_y>			= #5412
+
+
+
+  #<probe_center_offset>	= [#<x_offset> - #<probe_range_x> / 2]
 
 
   (Current X Position including offsets in current program units)
@@ -61,28 +81,47 @@ o<probe_x_minus> sub
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o120 if [#<probe_slow_fr> GT 0]
-      (Initiate Slow X- Probe)
+    
+    (Initiate Slow X- Probe)
+    #<x_minus_probed_sum> = 0
+    #1 = #<add_probetrips>
+    o121 while [#1  GE 0]
       G91
       F[#<probe_slow_fr>]
       G38.2 X-[#<xy_clearance> * 2]
-      #<x_minus_probed> = #5061
-      (debug, Probed Pos: #5061 X Pos: #<_x>)
+      #<x_minus_probed_sum> = [#<x_minus_probed_sum> + #5061]
       G90
-      G0 X[#<x_minus_probed> + #<xy_clearance>]
+      G0 X[#5061 + #<xy_clearance>]
+      #1 = [#1 - 1]
+    o121 endwhile
+
+    #<x_minus_probed> = [#<x_minus_probed_sum> / [#<add_probetrips> + 1]]
+    #1000 = #<x_minus_probed>
+
+    o103 If [#<dev_msg> EQ 1]
+      (debug, Probed Pos: #<x_minus_probed> X Pos: #<_x>)
+    o103 endif
   o120 endif
 
-  #<x_minus_zero_edge> = [#<x_minus_probed> - #<probe_center_offset>]
+  #<x_minus_zero_edge> = [#<x_minus_probed> + #<probe_center_offset>]
 
+  o104 If [#<no_msg> EQ 0]
   (output to gui DRO "X PROBED POSITION")
   (debug, Probed Pos: #<x_minus_zero_edge>)
-
+  o104 endif
 
   (probe mode rule for WCO or probe position measuring only)
   o130 if [#<probe_mode> EQ 0]
       (Record X Zero in selected WCO)
-      G10 L2 P#5220 X[#<_hal[pyvcp.probe_offset]>+#<x_minus_zero_edge> + #<workspace_x>]
+      G10 L2 P#5220 X[-#<_hal[pyvcp.probe_offset]>+#<x_minus_zero_edge> + #<workspace_x>]
       o<probe_x_minus> return
   o130 endif
+
+
+  o100 else
+    (MSG, No specified probe tool in spindle, aborting)
+    o<probe_x_minus> return
+  o100 endif
 
 
 o<probe_x_minus> endsub
