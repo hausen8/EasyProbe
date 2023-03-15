@@ -2,7 +2,7 @@
 
 [easy]probe is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, two halfiles and a folder with some macros, it should work regardless of your LinuxCNC version.
 
-### 1) Install files
+### 1) Copy files
 
 Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME):
 - macros folder with all ngc files:
