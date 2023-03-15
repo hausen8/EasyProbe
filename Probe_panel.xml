@@ -5,7 +5,7 @@
 
 <pyvcp>
     <tabs>
-        <names>["Coord/Probe"]</names>
+        <names>["Easy Probe"]</names>
         <!-- Beginning of probe/coordinates tab -->
         <vbox>
             <hbox>
