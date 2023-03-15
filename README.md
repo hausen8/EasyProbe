@@ -39,7 +39,7 @@ INI_VARS = 1
 HAL_PIN_VARS = 1
 ```
 
-*Note: SUBROUTINE_PATH ist the path to your probe macros folder. If you rename the folder or move it i.e. to nc_file/macros, you have to enter the right path here.*
+*Note: SUBROUTINE_PATH ist the path to your probe macros folder. If you rename the folder or move it i.e. to nc_files/macros, you have to enter the right path here.*
 
 ```
 [HAL]
