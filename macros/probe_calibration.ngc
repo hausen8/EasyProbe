@@ -6,63 +6,79 @@
 o<probe_calibration> sub
 
   (1. find Center; 2. turn spindle 180 degrees; 3. find center again)
-  #<tool_number_min>	= #<_ini[probe]TOOL_NUMBER_MIN>
-  #<tool_number_max>	= #<_ini[probe]TOOL_NUMBER_MAX>
-  #<ref_diameter> 	= #<_hal[pyvcp.probe_diameter]> 
+  #<tool_number_1>			= #<_ini[probe]TOOL_NUMBER_1>
+  #<tool_number_2>			= #<_ini[probe]TOOL_NUMBER_2>
+  #<tool_number_3>			= #<_ini[probe]TOOL_NUMBER_3>
+  #<ref_diameter> 			= #<_hal[pyvcp.probe_diameter]> 
 
+  #<add_probetrips>			= #<_ini[probe]ADD_PROBETRIPS>
 
   (Cancel G92 offsets)
   G92.1
 
   (Probe Tool Safety Check)
-  o100 if [[#5400 GT #<tool_number_max>] OR [#5400 LT #<tool_number_min>]]
+  o100 if [#5400 EQ 0]
       (MSG, No specified probe tool in spindle, aborting)
-      o<probe_x_minus> return
-  o100 endif
+      o<probe_calibration> return
+  
+  o100 elseif [[#5400 EQ #<tool_number_1>] OR [#5400 EQ #<tool_number_2>] OR [#5400 EQ #<tool_number_3>]]
+  
+    #<internal_tool_number>	= 1
+  o101 if [#5400 EQ #<tool_number_2>] 
+    #<internal_tool_number>	= 2
+  o101 elseif [#5400 EQ #<tool_number_3>]
+    #<internal_tool_number>	= 3
+  o101 endif
+  
+  o102 if [#5410 EQ 0]
+      (MSG, No tipdiameter specified. Please enter tipdiameter to tooltable, aborting)
+      o<probe_calibration> return
+  o102 endif
 
 
-
-  (Set tooloffsets #5401 to #5409 to zero)
-  G10 L1 P#5400 X0 Y0 Z0 A0 B0 C0 U0 V0 W0
+  (Set tooloffsets and ranges to zero)
+  G10 L1 P#5400 X0 Y0 I0 J0
 
 
   (Call sub "probe_pocket" with setting WC0 to zero to find center position)
-  o<probe_pocket> call [0]
-  #<x_probed_width_1> 	= #1001
-  #<y_probed_width_1> 	= #1003
+  o<probe_pocket> call [0][#<add_probetrips>]
+  #<x_probed_width> 	= #1001
+  #<y_probed_width> 	= #1003
+  #10 = [#<ref_diameter> - #<x_probed_width>]
+  #11 = [#<ref_diameter> - #<y_probed_width>]
 
 
   (MSG, Please turn spindle 180 degrees and resume.)
   M0
 
 
-
   (Call sub "probe_pocket" without setting WC0 to zero to find center position)
-  o<probe_pocket> call [1]
-  #<x_probed_width_2> 	= #1001
-  #<y_probed_width_2> 	= #1003
+  o<probe_pocket> call [1][#<add_probetrips>]
+  #8 = [#<_x> / 2]
+  #9 = [#<_y> / 2]
+  
+  
+  
+  (Set tooloffsets and ranges)
+  G10 L1 P#5400 X#8 Y#9 I#10 J#11  
 
-
-
-
-  (Calculation of probe offsets and probe_ranges)
-  #<probe_range_x> = #<ref_diameter> - [[#<x_probed_width_1> + #<x_probed_width_2>] / 2]
-  #<probe_range_y> = #<ref_diameter> - [[#<y_probed_width_1> + #<y_probed_width_2>] / 2]
-
-  #<x_offset> = #<_x> / 2
-  #<y_offset> = #<_y> / 2
-
- 
-  (Set tooloffsets #5401 to #5409 to calculated values)
-  G10 L1 P#5400 X#<x_offset> Y#<y_offset> Z0 A0 B0 C0 U#<probe_range_x> V#<probe_range_y> W0
-
-  #<probe_trigger_runout> = SQRT[#<x_offset> * #<y_offset>]
+  #<probe_trigger_runout> = [2 * SQRT[ABS[#8 * #8 + #9 * #9]]]
+  
+  (Set current coordsystem to zero)
+  G10 L20 P#5220 X[#<_x> / 2] Y[#<_y> / 2]
+  
+  
 
   (debug, Probe triggermidpoint runout: #<probe_trigger_runout>)
   o110 if [#<probe_trigger_runout> GT 0.10]
       (MSG, Triggermiddlepoint runout is greater then 0.1mm. Manually adjustment recommended.)
       o<probe_calibration> return
   o110 endif
-  
+ 
+  o100 else
+    (MSG, No specified probe tool in spindle, aborting)
+    o<probe_calibration> return
+  o100 endif
 
 o<probe_calibration> endsub
+M2 (end program)
