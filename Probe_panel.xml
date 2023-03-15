@@ -6,7 +6,7 @@
 <pyvcp>
     <tabs>
         <names>["Easy Probe"]</names>
-        <!-- Beginning of probe/coordinates tab -->
+        <!-- Beginning of probe tab -->
         <vbox>
             <hbox>
                 <button width="5" text="G54" halpin="g54" disable_pin="true" />
@@ -74,7 +74,7 @@
                 <rectled width="25" height="25" on_color="#80b000" off_color="#ff3000" halpin="probe_led" />
         </hbox>
         </vbox>
-        <!-- End of probe/coordinates tab -->
+        <!-- End of probe tab -->
     </tabs>
 </pyvcp>
 
