@@ -141,7 +141,7 @@ T99 P99 D2 ;
 
 ### 5) Troubleshooting
 
-If you already have an MPG or game controller configured in your hal files, you might get a debug message saying that 'halui.machine.is-on', 'halui.program.is-idle' or both of them were already linked to another signal. If you get a message like:
+If you already have an MPG or control desk configured in your hal files, you might get a debug message saying that 'halui.machine.is-on', 'halui.program.is-idle' or both of them were already linked to another signal. If you get a message like:
 
 ```
 Probe_postgui.hal:76: Pin 'halui.machine.is-on' was already linked to signal 'machine_enabled'
