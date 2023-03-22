@@ -144,7 +144,7 @@ T99 P99 D2 ;
 If you already have an MPG or game controller configured in your hal files, you might get a debug message saying that 'halui.machine.is-on', 'halui.program.is-idle' or both of them were already linked to another signal. In this case you have to edit your Probe_postgui.hal.
 
 ```
-Probe_postgui.hal:76: Pin 'halui.machine.is-on' was already linked to signal 'machine-on'
+Probe_postgui.hal:76: Pin 'halui.machine.is-on' was already linked to signal 'machine_enabled'
 ```
 
 Note the signal name and change row 76 of your Probe_postgui.hal from
@@ -156,5 +156,5 @@ net   machine-is-on    lut_act_panel.in-0    <=    halui.machine.is-on
 to
 
 ```
-net   machine-on    lut_act_panel.in-0
+net   machine_enabled    lut_act_panel.in-0
 ```
