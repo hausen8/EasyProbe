@@ -157,5 +157,6 @@ Probe_postgui.hal:76: Pin 'halui.machine.is-on' was already linked to signal 'ma
 Edit your Probe_postgui.hal so that lut_act_panel.in-0 is only linked to the signal name 'machine-is-on' and not to the pin 'halui.machine.is-on':
 
 ```
-# net   machine-is-on    lut_act_panel.in-0    ~~<=    halui.machine.is-on~~
+# net   machine-is-on    lut_act_panel.in-0    <=    halui.machine.is-on
+net   machine-is-on    lut_act_panel.in-0
 ```
