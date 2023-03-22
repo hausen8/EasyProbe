@@ -147,7 +147,7 @@ If you already have an MPG or game controller configured in your hal files, you 
 Probe_postgui.hal:76: Pin 'halui.machine.is-on' was already linked to signal 'machine_enabled'
 ```
 
-Note the signal name and change your Probe_postgui.hal so that lut_act_panel.in-0 is linked to the signal name 'machine_enabled' instead of 'halui.machine.is-on'.
+Change your Probe_postgui.hal so that lut_act_panel.in-0 is linked to the signal name 'machine_enabled' instead of 'halui.machine.is-on'.
 
 ```
 # net   machine-is-on    lut_act_panel.in-0    <=    halui.machine.is-on
