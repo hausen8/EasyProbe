@@ -1,6 +1,6 @@
 # [easy]probe
 
-[easy]probe is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, two halfiles and a folder with some macros, it should work regardless of your LinuxCNC version.
+[easy]probe is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, two hal files and a folder with some macros, it should work regardless of your LinuxCNC version.
 
 ### 1) Copy files
 
@@ -141,22 +141,21 @@ T99 P99 D2 ;
 
 ### 5) Troubleshooting
 
-If you configured your machine with pncconf, you will find a lot of functionless pins linked right at the end of your halfile under "connect miscellanous signals". Delete or comment out the following two lines:
+If you configured your machine with pncconf, you will find a lot of functionless pins linked right at the end of your hal file under "connect miscellanous signals". If you don't have an MPG or control desk using halui.machine.is-on, delete or comment out the following two lines:
 
 ```
 net   machine-is-on   halui.machine.is-on
 net   probe-in        motion.probe-input
 ```
 
-If you already have an MPG or control desk configured in your hal files, you might get a debug message saying that 'halui.machine.is-on' or 'halui.program.is-idle' was already linked to another signal. If you get a message like:
+If you already have an MPG or control desk configured in your hal files or if you're unsure, delete or comment out only the 2nd line and try to start LinuxCNC. If you get a message like:
 
 ```
-Probe_postgui.hal:76: Pin 'halui.machine.is-on' was already linked to signal 'machine_enabled'
+Probe_postgui.hal:76: Pin 'halui.machine.is-on' was already linked to signal 'machine-is-on'
 ```
 
-Edit your Probe_postgui.hal so that lut_act_panel.in-0 is linked to the signal name 'machine_enabled' instead of the pin 'halui.machine.is-on':
+Edit your Probe_postgui.hal so that lut_act_panel.in-0 is only linked to the signal name 'machine-is-on' and not to the pin 'halui.machine.is-on':
 
 ```
-# net   machine-is-on    lut_act_panel.in-0    <=    halui.machine.is-on
-net   machine_enabled    lut_act_panel.in-0
+# net   machine-is-on    lut_act_panel.in-0    ~~<=    halui.machine.is-on~~
 ```
