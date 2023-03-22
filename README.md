@@ -141,7 +141,7 @@ T99 P99 D2 ;
 
 ### 5) Troubleshooting
 
-If you configured your machine with pncconf, you will find a lot of functionless pins linked right at the end of your hal file under "connect miscellaneous signals". If you don't have an MPG or control desk using halui.machine.is-on, delete or comment out the following two lines:
+If you configured your machine with pncconf, you will find a lot of functionless pins linked right at the end of your machine hal file under "connect miscellaneous signals". If you don't have an MPG or control desk using halui.machine.is-on, find and delete or comment out the following two lines:
 
 ```
 net   machine-is-on   halui.machine.is-on
