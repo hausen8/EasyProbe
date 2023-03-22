@@ -141,6 +141,13 @@ T99 P99 D2 ;
 
 ### 5) Troubleshooting
 
+If you configured your machine with pncconf, you will find a lot of functionless pins linked right at the end of your halfile under "connect miscellanous signals". Delete or comment out the following two lines:
+
+```
+net   machine-is-on   halui.machine.is-on
+net   probe-in        motion.probe-input
+```
+
 If you already have an MPG or control desk configured in your hal files, you might get a debug message saying that 'halui.machine.is-on' or 'halui.program.is-idle' was already linked to another signal. If you get a message like:
 
 ```
