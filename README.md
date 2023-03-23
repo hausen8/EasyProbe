@@ -155,7 +155,7 @@ If you already have an MPG or control desk configured in your hal files or if yo
 net   machine-is-on    lut_act_panel.in-0
 ```
 
-If your MPG or control desk allows you to start, pause and stop a program, the following debug message could pop up:
+If your MPG or control desk allows you to start, pause and stop a program, you might get the following debug message:
 
 ```
 custom_postgui.hal:77: Pin 'halui.program.is-idle' was already linked to signal 'idle-led'
