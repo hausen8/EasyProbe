@@ -158,7 +158,7 @@ net   machine-is-on    lut_act_panel.in-0
 If your MPG or control desk allows you to start, pause and stop a program, the following debug message could pop up:
 
 ```
-custom_postgui.hal:76: Pin 'halui.program.is-idle' was already linked to signal 'idle-led'
+custom_postgui.hal:77: Pin 'halui.program.is-idle' was already linked to signal 'idle-led'
 ```
 
 In this case you have to edit your Probe_postgui.hal so that lut_act_panel.in-1 is only linked to the signal name mentioned in the message and not to the pin 'halui.program.is-idle' anymore:
