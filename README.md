@@ -141,7 +141,7 @@ T99 P99 D2 ;
 
 ### 5) Troubleshooting
 
-If you configured your machine with pncconf, you will find a lot of functionless pins linked right at the end of your machine hal file under "connect miscellaneous signals". If you don't have an MPG or control desk using halui.machine.is-on, find and delete or comment out the following two lines:
+If you configured your machine with pncconf, you will find a lot of functionless pins linked right at the end of your machine hal file under "connect miscellaneous signals". If you don't have an MPG or control desk using 'halui.machine.is-on', find and delete or comment out the following two lines:
 
 ```
 net   machine-is-on   halui.machine.is-on
@@ -154,3 +154,18 @@ If you already have an MPG or control desk configured in your hal files or if yo
 # net   machine-is-on    lut_act_panel.in-0    <=    halui.machine.is-on
 net   machine-is-on    lut_act_panel.in-0
 ```
+
+If your MPG or control desk allows you to start, pause and stop a program, the following debug message could pop up:
+
+```
+custom_postgui.hal:76: Pin 'halui.program.is-idle' was already linked to signal 'idle-led'
+```
+
+In this case you have to edit your Probe_postgui.hal so that lut_act_panel.in-1 is only linked to the signal name mentioned in the message and not to the pin 'halui.program.is-idle' anymore:
+
+```
+# net   program-is-idle    lut_act_panel.in-1    <=    halui.program.is-idle
+net   idle-led    lut_act_panel.in-1
+```
+
+
