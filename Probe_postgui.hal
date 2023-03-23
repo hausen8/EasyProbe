@@ -74,7 +74,7 @@ net   disable-tool3            or_tool3.out                 =>    pyvcp.tool3.di
 setp  lut_act_panel.function   0x8
 
 net   machine-is-on            lut_act_panel.in-0           <=    halui.machine.is-on
-net   program-is-running       lut_act_panel.in-1           <=    halui.program.is-idle
+net   program-is-idle          lut_act_panel.in-1           <=    halui.program.is-idle
 net   not-disabled             lut_act_panel.out            =>    not_disabled.in
 
 net   disable-panel            not_disabled.out             =>
