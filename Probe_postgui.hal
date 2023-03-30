@@ -1,7 +1,7 @@
 # Probe_postgui.hal for [easy]probe
 # Author: Hausen 8
 # Version: 1.1
-# Last Edited: 23-03-29
+# Last Edited: 23-03-30
 
 
 
@@ -90,7 +90,7 @@ setp  lut_inhibit.function     0x16
 net   check-tool1              lut_inhibit.in-0             <=    and_probe1.out
 net   check-tool2              lut_inhibit.in-1             <=    and_probe2.out
 net   check-tool3              lut_inhibit.in-2             <=    and_probe3.out
-net   inhibit-on               lut_inhibit.out              =>    pyvcp.spindle-inhibit
+net   inhibit-on               lut_inhibit.out              =>    spindle.0.inhibit pyvcp.spindle-inhibit
 
 
 
