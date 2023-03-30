@@ -2,10 +2,6 @@
 
 [easy]probe is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, two hal files and a folder with some macros, it should work regardless of your LinuxCNC version.
 
-### History
-
-- v1.1: Removed function to disable all buttons when a program is running due to a problem with pushed buttons remaining in high state after the program started. Added a spindle inhibit function while a probe tool is selected with M6.
-
 ### 1) Copy files
 
 Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME):
