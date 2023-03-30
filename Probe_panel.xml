@@ -1,7 +1,8 @@
 <!-- Probe_panel.xml for [easy]probe -->
 <!-- Author: Hausen 8 -->
-<!-- Last Edited: 23-03-21 -->
-<!-- Copy this tab into your existing PyVCP or load it as it is (see readme.md) -->
+<!-- Version: 1.1 -->
+<!-- Last Edited: 23-03-29 -->
+
 
 
 <pyvcp>
@@ -38,16 +39,16 @@
             </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
-        <label text="Diameter" width="10" />
+                <label text="Diameter" width="10" />
                 <spinbox width="10" min_="0" max_="100" initval="25" param_pin="1" format="2.3f" halpin="probe_diameter" />
-        <label text="mm" />
+                <label text="mm" />
             </hbox>
             <label font="Helvetica, 1" text=" " />
             <hbox>
-        <label text="Zero/Offset" width="10" />
+                <label text="Zero/Offset" width="10" />
                 <spinbox width="10" min_="-1000" max_="1000" initval="0" param_pin="1" format="2.3f" halpin="probe_offset" />
-        <label text="mm" />
-        </hbox>
+                <label text="mm" />
+            </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
                 <button width="2" height="2" padx="10" text="" halpin="blank_1" relief="flat" disable_pin="true" />
@@ -66,14 +67,18 @@
             </hbox>
             <label font="Helvetica, 12" text=" " />
             <hbox>
-                <checkbutton padx="4" halpin="act_calib" text="Activate " />
-                <button text="Calibration" padx="14" halpin="probe_calib" disable_pin="true" />
+                <checkbutton width="8" halpin="act_calib" text="Activate " />
+                <button text="Calibration" halpin="probe_calib" disable_pin="true" />
             </hbox>
             <label font="Helvetica, 10" text=" " />
             <hbox>
-        <label text="Probe Signal" width="10" />
-                <rectled width="25" height="25" on_color="#80b000" off_color="#ff3000" halpin="probe_led" />
-        </hbox>
+                <label text="Probe Signal" width="11" />
+                <rectled width="25" height="25" on_color="#ff3000" off_color="#80b000" halpin="probe_led" />
+            </hbox>
+            <hbox>
+                <label text="Spindle Inhibit" width="11" />
+                <rectled width="25" height="25" on_color="#ff3000" off_color="#80b000" halpin="spindle-inhibit" />
+            </hbox>
         </vbox>
         <!-- End of probe tab -->
     </tabs>

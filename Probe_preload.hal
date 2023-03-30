@@ -1,31 +1,31 @@
 # Probe_preload.hal for [easy]probe
 # Author: Hausen 8
-# Last Edited: 23-03-21
+# Version: 1.1
+# Last Edited: 23-03-29
 
 
 
 # ---------- Load realtime components for [easy]probe ----------
 
-loadrt  comp           names=comp_tool1,comp_tool2,comp_tool3
-loadrt  dbounce        names=dbounce_probe
-loadrt  lut5           names=lut_act_panel
-loadrt  not            names=not_act_cal,not_disabled,not_tool1,not_tool2,not_tool3
-loadrt  or2            names=or_act_cal,or_tool1,or_tool2,or_tool3
+loadrt  and2              names=and_probe1,and_probe2,and_probe3
+loadrt  comp              names=comp_probe1,comp_probe2,comp_probe3,comp_tool1,comp_tool2,comp_tool3
+loadrt  conv_u32_float    names=conv_toolnum
+loadrt  dbounce           names=dbounce_probe
+loadrt  lut5              names=lut_inhibit
+loadrt  not               names=not_act_cal
 
-addf    comp_tool1     servo-thread
-addf    comp_tool2     servo-thread
-addf    comp_tool3     servo-thread
-addf    dbounce_probe  servo-thread
-addf    lut_act_panel  servo-thread
-addf    not_tool1      servo-thread
-addf    not_tool2      servo-thread
-addf    not_tool3      servo-thread
-addf    not_act_cal    servo-thread
-addf    not_disabled   servo-thread
-addf    or_act_cal     servo-thread
-addf    or_tool1       servo-thread
-addf    or_tool2       servo-thread
-addf    or_tool3       servo-thread
-
+addf    and_probe1        servo-thread
+addf    and_probe2        servo-thread
+addf    and_probe3        servo-thread
+addf    comp_probe1       servo-thread
+addf    comp_probe2       servo-thread
+addf    comp_probe3       servo-thread
+addf    comp_tool1        servo-thread
+addf    comp_tool2        servo-thread
+addf    comp_tool3        servo-thread
+addf    conv_toolnum      servo-thread
+addf    dbounce_probe     servo-thread
+addf    lut_inhibit       servo-thread
+addf    not_act_cal       servo-thread
 
 

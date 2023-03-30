@@ -1,10 +1,12 @@
 # Probe_postgui.hal for [easy]probe
 # Author: Hausen 8
-# Last Edited: 23-03-21
+# Version: 1.1
+# Last Edited: 23-03-29
 
 
 
 # ---------- Probe signal and LED control (see readme.md) ----------
+# dbounce_probe.in must be linked to the probe tool input of the interface card
 
 setp  dbounce_probe.delay      [PROBE]DEBOUNCE_TIME
 
@@ -46,61 +48,49 @@ net   pyvcp-probe-calibration  halui.mdi-command-21         <=    pyvcp.probe_ca
 
 
 # ---------- Disable unused probe tool buttons ----------
+# comp_probe1/2/3.equal disables a button when [PROBE]TOOL_NUMBER_1/2/3 = 0
+# comp_probe1/2/3.out sets the first condition to check if a tool exists and is active
 
-setp  comp_tool1.in0           0
-setp  comp_tool2.in0           0
-setp  comp_tool3.in0           0
+setp  comp_probe1.in0          0
+setp  comp_probe2.in0          0
+setp  comp_probe3.in0          0
 
-setp  comp_tool1.in1           [PROBE]TOOL_NUMBER_1
-setp  comp_tool2.in1           [PROBE]TOOL_NUMBER_2
-setp  comp_tool3.in1           [PROBE]TOOL_NUMBER_3
+setp  comp_probe1.in1          [PROBE]TOOL_NUMBER_1
+setp  comp_probe2.in1          [PROBE]TOOL_NUMBER_2
+setp  comp_probe3.in1          [PROBE]TOOL_NUMBER_3
 
-net   not-tool1                comp_tool1.out               =>    not_tool1.in
-net   not-tool2                comp_tool2.out               =>    not_tool2.in
-net   not-tool3                comp_tool3.out               =>    not_tool3.in
+net   disable-tool1            comp_probe1.equal            =>    pyvcp.tool1.disable
+net   disable-tool2            comp_probe2.equal            =>    pyvcp.tool2.disable
+net   disable-tool3            comp_probe3.equal            =>    pyvcp.tool3.disable
 
-net   or-tool1                 not_tool1.out                =>    or_tool1.in0
-net   or-tool2                 not_tool2.out                =>    or_tool2.in0
-net   or-tool3                 not_tool3.out                =>    or_tool3.in0
-
-net   disable-tool1            or_tool1.out                 =>    pyvcp.tool1.disable
-net   disable-tool2            or_tool2.out                 =>    pyvcp.tool2.disable
-net   disable-tool3            or_tool3.out                 =>    pyvcp.tool3.disable
+net   check-tool1-defined      comp_probe1.out              =>    and_probe1.in0
+net   check-tool2-defined      comp_probe2.out              =>    and_probe2.in0
+net   check-tool3-defined      comp_probe3.out              =>    and_probe3.in0
 
 
 
-# ---------- Disable-Pins for Buttons ----------
+# ---------- Inhibit spindle while probe tool is inserted ----------
+# comp_tool1/2/3 checks if [PROBE]TOOL_NUMBER_1/2/3 = halui.tool.number (is the active tool)
+# conv_toolnum is required by comp to convert halui.tool.number from u32 to float
+# lut_inhibit sets spindle-inhibit true when any of the probe tools are defined and active
 
-setp  lut_act_panel.function   0x8
+setp  comp_tool1.in0           [PROBE]TOOL_NUMBER_1
+setp  comp_tool2.in0           [PROBE]TOOL_NUMBER_2
+setp  comp_tool3.in0           [PROBE]TOOL_NUMBER_3
 
-net   machine-is-on            lut_act_panel.in-0           <=    halui.machine.is-on
-net   program-is-idle          lut_act_panel.in-1           <=    halui.program.is-idle
-net   not-disabled             lut_act_panel.out            =>    not_disabled.in
+net   tool-u32                 conv_toolnum.in              <=    halui.tool.number
+net   tool-float               conv_toolnum.out             =>    comp_tool1.in1 comp_tool2.in1 comp_tool3.in1
 
-net   disable-panel            not_disabled.out             =>
-net   disable-panel            pyvcp.g54.disable            <=
-net   disable-panel            pyvcp.g55.disable            <=
-net   disable-panel            pyvcp.g56.disable            <=
-net   disable-panel            pyvcp.g57.disable            <=
-net   disable-panel            pyvcp.g58.disable            <=
-net   disable-panel            pyvcp.g59.disable            <=
-net   disable-panel            pyvcp.g591.disable           <=
-net   disable-panel            pyvcp.g592.disable           <=
-net   disable-panel            pyvcp.g593.disable           <=
-net   disable-panel            pyvcp.p0x0.disable           <=
-net   disable-panel            pyvcp.p0y0.disable           <=
-net   disable-panel            pyvcp.p0z0.disable           <=
-net   disable-panel            or_tool1.in1                 <=
-net   disable-panel            or_tool2.in1                 <=
-net   disable-panel            or_tool3.in1                 <=
-net   disable-panel            pyvcp.probe_x.disable        <=
-net   disable-panel            pyvcp.probe_minus_x.disable  <=
-net   disable-panel            pyvcp.probe_y.disable        <=
-net   disable-panel            pyvcp.probe_minus_y.disable  <=
-net   disable-panel            pyvcp.probe_minus_z.disable  <=
-net   disable-panel            pyvcp.probe_hole.disable     <=
-net   disable-panel            or_act_cal.in0               <=
+net   check-tool1-active       comp_tool1.equal             =>    and_probe1.in1
+net   check-tool2-active       comp_tool2.equal             =>    and_probe2.in1
+net   check-tool3-active       comp_tool3.equal             =>    and_probe3.in1
 
+setp  lut_inhibit.function     0x16
+
+net   check-tool1              lut_inhibit.in-0             <=    and_probe1.out
+net   check-tool2              lut_inhibit.in-1             <=    and_probe2.out
+net   check-tool3              lut_inhibit.in-2             <=    and_probe3.out
+net   inhibit-on               lut_inhibit.out              =>    pyvcp.spindle-inhibit
 
 
 
@@ -112,10 +102,10 @@ net   probe_offset             pyvcp.probe_offset           =>
 
 
 # ---------- Enable control for calibration button ----------
+# checkbox bit needs to be inverted to disable the button in unchecked state
 
 net   active_check             pyvcp.act_calib              =>    not_act_cal.in
-net   invert_check             or_act_cal.in1               <=    not_act_cal.out
-net   active_calib             or_act_cal.out               =>    pyvcp.probe_calib.disable
+net   invert_check             pyvcp.probe_calib.disable    <=    not_act_cal.out
 
 
 
