@@ -139,9 +139,7 @@ Open LinuxCNC -> File -> Tooledit or open your tool.tbl file in any text editor 
 T99 P99 D2 ;
 ```
 
-### TROUBLESHOOTING
 
-If you encounter any problems, please read /manual/Easy_Probe_troubleshooting.txt
 
 ### HISTORY
 
