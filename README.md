@@ -2,7 +2,7 @@
 
 [easy]probe is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, two hal files and a folder with some macros, it should work regardless of your LinuxCNC version.
 
-### 1) Copy files
+### 1) COPY FILES
 
 Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME):
 - macros folder with all ngc files:
@@ -19,7 +19,7 @@ Copy the following content to your machine configuration folder (typically under
 - Probe_postgui.hal
 - Probe_preload.hal
 
-### 2) Edit your INI
+### 2) EDIT YOUR INI
 
 Add the following lines to the appropriate sections of your machine ini file:
 
@@ -118,7 +118,7 @@ DEV_MSG = 0
 DEBOUNCE_TIME = 10
 ```
 
-### 3) Edit your POSTGUI HAL
+### 3) EDIT YOUR POSTGUI HAL
 
 Open your Probe_postgui.hal or the postgui hal file where you added the content of Probe_postgui.hal and find the following lines:
 
@@ -131,7 +131,7 @@ net   probe-signal    pyvcp.probe_led       <=
 
 #PHYSICAL_PROBE_PIN must be exchanged to the physical pin of your interface card where your probe tool is connected to. In case of a Mesa 7i76e it should be something like hm2_7i76e.0.7i76.0.0.input-NN, where NN is the number of the input.
 
-### 4) Edit your TOOL TABLE
+### 4) EDIT YOUR TOOL TABLE
 
 Open LinuxCNC -> File -> Tooledit or open your tool.tbl file in any text editor and add an entry for each probe tool. You have to enter at least the tool number, pocket number and tip diameter. The sample below shows a tool with tool number 99, pocket number 99 and a 2m diameter.
 
@@ -139,7 +139,7 @@ Open LinuxCNC -> File -> Tooledit or open your tool.tbl file in any text editor 
 T99 P99 D2 ;
 ```
 
-### 5) Troubleshooting
+### TROUBLESHOOTING
 
 If you encounter any problems, please read /manual/Easy_Probe_troubleshooting.txt
 
