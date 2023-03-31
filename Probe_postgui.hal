@@ -1,7 +1,7 @@
 # Probe_postgui.hal for [easy]probe
 # Author: Hausen 8
 # Version: 1.1
-# Last Edited: 23-03-30
+# Last Edited: 23-03-31
 
 
 
@@ -87,10 +87,10 @@ net   check-tool3-active       comp_tool3.equal             =>    and_probe3.in1
 
 setp  lut_inhibit.function     0x16
 
-net   check-tool1              lut_inhibit.in-0             <=    and_probe1.out
-net   check-tool2              lut_inhibit.in-1             <=    and_probe2.out
-net   check-tool3              lut_inhibit.in-2             <=    and_probe3.out
-net   inhibit-on               lut_inhibit.out              =>    spindle.0.inhibit pyvcp.spindle-inhibit
+net   probetool-1-on           lut_inhibit.in-0             <=    and_probe1.out
+net   probetool-2-on           lut_inhibit.in-1             <=    and_probe2.out
+net   probetool-3-on           lut_inhibit.in-2             <=    and_probe3.out
+net   probetool-is-on          lut_inhibit.out              =>    spindle.0.inhibit pyvcp.spindle-inhibit
 
 
 
