@@ -128,7 +128,7 @@ net   probe-signal    pyvcp.probe_led       <=
 
 ### 4) Edit your TOOL TABLE
 
-Open LinuxCNC -> File -> Tooledit or open your tool.tbl file in any text editor and add an entry for each probe tool. You have to enter at least the tool number, pocket number and tip diameter. The sample below shows a tool with tool number 99, pocket number 99 and a 2m diameter.
+Open LinuxCNC -> File -> Tooledit or open your tool.tbl file in any text editor and add an entry for each probe tool. You have to enter at least the tool number, pocket number and tip diameter. The sample below shows a tool with tool number 99, pocket number 99 and a 2 mm diameter.
 
 ```
 T99 P99 D2 ;
