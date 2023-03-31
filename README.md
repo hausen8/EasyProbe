@@ -138,5 +138,5 @@ T99 P99 D2 ;
 
 ### HISTORY
 
-v1.1: Removed function to disable all buttons when a program is running due to a problem with pushed buttons remaining in high state after the program started. Added a spindle inhibit function while a probe tool is selected with M6.
+v1.1: Removed function to disable all buttons when a program is running due to a problem with pushed buttons remaining in high state after the program started. Added a spindle inhibit function while a probe tool is selected with M6. Some minor changes in macros. Read changelog file in macro folder for more information.
 
