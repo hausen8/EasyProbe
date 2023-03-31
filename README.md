@@ -5,16 +5,7 @@
 ### 1) Copy files
 
 Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME):
-- macros folder with all ngc files:
-  - on_abort.ngc
-  - probe_calibration.ngc
-  - probe_pocket.ngc
-  - probe_toolchange.ngc
-  - probe_x_minus.ngc
-  - probe_x_plus.ngc
-  - probe_y_minus.ngc
-  - probe_y_plus.ngc
-  - probe_z_minus.ngc
+- folder /macros with all ngc files
 - Probe_panel.xml
 - Probe_postgui.hal
 - Probe_preload.hal
