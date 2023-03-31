@@ -5,10 +5,13 @@
 ### 1) Copy files
 
 Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME):
-- folder /macros with all ngc files
-- Probe_panel.xml
-- Probe_postgui.hal
-- Probe_preload.hal
+
+```
+/macros
+Probe_panel.xml
+Probe_postgui.hal
+Probe_preload.hal
+```
 
 ### 2) Edit your INI
 
