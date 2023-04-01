@@ -1,0 +1,19 @@
+(author: Hausen8)
+(version: 1.0)
+(date: 03/15/23)
+
+(Tool change for probe tools defined in the [PROBE] section of your machine.ini)
+
+o<probe_toolchange> sub
+  o100 if [#1 EQ 1]
+    M6 T#<_ini[probe]TOOL_NUMBER_1>
+    G43
+  o100 elseif [#1 EQ 2]
+    M6 T#<_ini[probe]TOOL_NUMBER_2>
+    G43
+  o100 elseif [#1 EQ 3]
+    M6 T#<_ini[probe]TOOL_NUMBER_3>
+    G43
+  o100 endif
+o<probe_toolchange> endsub
+M2 (end program)

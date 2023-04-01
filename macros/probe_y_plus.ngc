@@ -1,0 +1,129 @@
+(author: Julian Koenig; Originally by Chris P - Probe Basic)
+(version: 1.1)
+(date: 03/31/23)
+
+(Probe Y plus direction to locate edge, end at clearance distance)
+(Start probe position to the front side edge of stock)
+(inside the max xy distance with the probe tip below the stock top edge)
+
+o<probe_y_plus> sub
+
+  #<xy_clearance> 			= #<_ini[probe]XY_CLEARANCE>
+  #<probe_mode>				= #2 	(0 for setting WC0; 1 for not setting WC0) 
+  #<add_probetrips>		= #3 (0 or not defined means one trip)
+  #<tool_number_1>			= #<_ini[probe]TOOL_NUMBER_1>
+  #<tool_number_2>			= #<_ini[probe]TOOL_NUMBER_2>
+  #<tool_number_3>			= #<_ini[probe]TOOL_NUMBER_3>
+  #<max_xy_distance> 		= [#<_ini[probe]MAX_XY_DISTANCE> + #1]
+  #<probe_slow_fr> 			= #<_ini[probe]VEL_SLOW>
+  #<probe_fast_fr> 			= #<_ini[probe]VEL_FAST>
+  #<dev_msg>				= #<_ini[probe]DEV_MSG>
+  #<no_msg>					= #4
+
+  (Cancel G92 offsets)
+  G92.1
+
+  #<workspace_y> = #[5202 + [20 * #5220]]
+
+
+  (Probe Tool Safety Check)
+  o100 if [#5400 EQ 0]
+      (MSG, No specified probe tool in spindle, aborting)
+      o<probe_y_plus> return
+  
+  o100 elseif [[#5400 EQ #<tool_number_1>] OR [#5400 EQ #<tool_number_2>] OR [#5400 EQ #<tool_number_3>]]
+  
+    #<internal_tool_number>	= 1
+  o101 if [#5400 EQ #<tool_number_2>] 
+    #<internal_tool_number>	= 2
+  o101 elseif [#5400 EQ #<tool_number_3>]
+    #<internal_tool_number>	= 3
+  o101 endif
+  
+  o102 if [#5410 EQ 0]
+      (MSG, No tipdiameter specified. Please enter tipdiameter to tooltable, aborting)
+      o<probe_y_plus> return
+  o102 endif
+
+  #<y_offset>				= #5402
+  #<tip_diameter>			= #5410
+  #<probe_range_y>			= #5412
+
+  o105 if [[#<y_offset> EQ 0] OR [#<probe_range_y> EQ 0]]
+      (MSG, No calibration data found in tooltable. Please do a calibration, aborting)
+      o<probe_y_plus> return
+  o105 endif
+
+  #<probe_center_offset>	= [#<y_offset> + #<probe_range_y> / 2]
+
+
+  (Current Y Position including offsets in current program units)
+  #<y> = #5421
+
+  (Initiate Fast y+ Probe)
+  G91
+  F[#<probe_fast_fr>]
+  G38.2 Y[#<max_xy_distance>]
+  #<y_plus_probed> = #5062
+
+  (Probe Error check, #5070 will be 0 if failed)
+  o110 if [#5070 EQ 0]
+      (back to start point and feed)
+      G90
+      G0 Y#<y>
+      F[#<probe_fast_fr>]
+      (return from sub)
+      o<probe_y_plus> return
+  o110 endif
+
+  (Move to xy_clearance distance for slow probe)
+  G90
+  G0 Y[#<y_plus_probed> - #<xy_clearance>]
+
+  (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
+  o120 if [#<probe_slow_fr> GT 0]
+      
+      
+    (Initiate Slow Y+ Probe)
+    #<y_plus_probed_sum> = 0
+    #1 = #<add_probetrips>
+    o121 while [#1  GE 0]
+      G91
+      F[#<probe_slow_fr>]
+      G38.2 Y[#<xy_clearance> * 2]
+      #<y_plus_probed_sum> = [#<y_plus_probed_sum> + #5062]
+      G90
+      G0 Y[#5062 - #<xy_clearance>]
+      #1 = [#1 - 1]
+    o121 endwhile
+      
+    #<y_plus_probed> = [#<y_plus_probed_sum> / [#<add_probetrips> + 1]]
+    #1000 = #<y_plus_probed>
+    
+    o103 If [#<dev_msg> EQ 1]
+      (debug, Probed Pos: #<y_plus_probed> Y Pos: #<_y>)
+    o103 endif
+  o120 endif
+  
+  #<y_plus_zero_edge> = [#<y_plus_probed> + #<probe_center_offset>]
+
+  o104 If [#<no_msg> EQ 0]
+    (debug, Probed Pos: #<y_plus_zero_edge>)
+  o104 endif
+
+  (probe mode rule for WCO or probe position measuring only)
+  o130 if [#<probe_mode> EQ 0]
+      (Record Y Zero in selected WCO)
+      G10 L2 P#5220 Y[-#<_hal[pyvcp.probe_offset]>+#<y_plus_zero_edge> + #<workspace_y>]
+      o<probe_y_plus> return
+  o130 endif  
+  
+
+o100 else
+    (MSG, No specified probe tool in spindle, aborting)
+    o<probe_y_plus> return
+  o100 endif
+
+
+o<probe_y_plus> endsub
+M2 (end program)
