@@ -1,6 +1,0 @@
-V1.1)
-1.) Message after pocket probe changed. Further information for resetting the midpoint to other coordinates are given.
-
-2.) Message after pocket probe changed while in calibration. Because offsets and ranges are set to zero while calibration the shown diameter are wrongly calculated before.
-
-3.) Further safety loops at beggining of all macros implemented. If ofsets and/or ranges are zero message that calibration has to be done and aborting.
