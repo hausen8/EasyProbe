@@ -1,7 +1,7 @@
 # Probe_postgui.hal for [easy]probe
 # Author: Hausen 8
-# Version: 1.1
-# Last Edited: 23-03-31
+# Version: 1.2
+# Last Edited: 23-04-03
 
 
 
@@ -109,11 +109,16 @@ net   invert_check             pyvcp.probe_calib.disable    <=    not_act_cal.ou
 
 
 
+# ---------- Switching backslash values ----------
+
+net   x-backlash               motion.analog-out-00         =>    ini.0.backlash
+net   y-backlash               motion.analog-out-01         =>    ini.1.backlash
+
+
 # ---------- Disable invisible buttons that keep probe buttons in a grid ----------
 
 setp  pyvcp.blank_1.disable    1
 setp  pyvcp.blank_2.disable    1
 setp  pyvcp.blank_3.disable    1
-
 
 
