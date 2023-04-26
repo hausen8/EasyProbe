@@ -1,0 +1,60 @@
+(author: Julian Koenig)
+(version: 1.2)
+(date: 04/26/23)
+
+
+o<probe_calibration> sub
+
+  (1. find Center; 2. turn spindle 180 degrees; 3. find center again)
+  #<tool_number_1>			= #<_ini[probe]TOOL_NUMBER_1>
+  #<tool_number_2>			= #<_ini[probe]TOOL_NUMBER_2>
+  #<tool_number_3>			= #<_ini[probe]TOOL_NUMBER_3>
+  #<ref_diameter> 			= #<_hal[pyvcp.probe_diameter]> 
+  #<add_probetrips>			= #<_ini[probe]ADD_PROBETRIPS>
+
+  (Probe tool safety checks)
+  o<probe_safety_checks> call [1]
+  o100 if [#<_value> EQ 0]
+    o<probe_calibration> return
+  o100 endif
+
+  (Cancel G92 offsets)
+  G92.1
+
+  (Set tooloffsets and ranges to zero)
+  G10 L1 P#5400 X0 Y0 I0 J0
+
+
+  (Call sub "probe_pocket" with setting WC0 to zero to find center position)
+  o<probe_pocket> call [0][#<add_probetrips>][1]
+  #<x_probed_width> 	= #1001
+  #<y_probed_width> 	= #1003
+  #10 = [#<ref_diameter> - #<x_probed_width>]
+  #11 = [#<ref_diameter> - #<y_probed_width>]
+
+  (MSG, Please turn spindle 180 degrees and resume.)
+  M0
+
+  (Call sub "probe_pocket" without setting WC0 to zero to find center position)
+  o<probe_pocket> call [1][#<add_probetrips>][1]
+  #8 = [#<_x> / 2]
+  #9 = [#<_y> / 2]
+  
+ 
+  (Set tooloffsets and ranges)
+  G10 L1 P#5400 X#8 Y#9 I#10 J#11  
+
+
+  (Set current coordsystem to zero)
+  G10 L20 P#5220 X[#<_x> / 2] Y[#<_y> / 2]
+  
+  #<probe_trigger_runout> = [2 * SQRT[ABS[#8 * #8 + #9 * #9]]]
+
+  (debug, Probe triggermidpoint runout: #<probe_trigger_runout>)
+  o120 if [#<probe_trigger_runout> GT 0.10]
+      (MSG, Triggermiddlepoint runout is greater then 0.1mm. Manually adjustment recommended.)
+      o<probe_calibration> return
+  o120 endif
+ 
+o<probe_calibration> endsub
+M2 (end program)
