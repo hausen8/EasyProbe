@@ -149,6 +149,7 @@ probetool-is-on
 
 ### HISTORY
 
+- **v1.3**: Removed section "Switching backslash values" in Probe_postgui.hal.
 - **v1.2**: Minor changes in macros. Read changelog file in macro folder for more information.
 - **v1.1**: Removed function to disable all buttons when a program is running due to a problem with pushed buttons remaining in high state after the program started. Added a spindle inhibit function while a probe tool is selected with M6. Some minor changes in macros. Read changelog file in macro folder for more information.
 - **v1.0**: Initial release
