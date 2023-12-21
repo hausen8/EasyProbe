@@ -109,10 +109,30 @@ net   invert_check             pyvcp.probe_calib.disable    <=    not_act_cal.ou
 
 
 
+# ---------- Switching backslash values ----------
+
+net   x-backlash               motion.analog-out-00         =>    ini.0.backlash
+net   y-backlash               motion.analog-out-01         =>    ini.1.backlash
+
+
+
+# ---------- Set machine Units ----------
+setp  pyvcp.units_1.legend1    [PROBE]MACHINE_UNITS
+setp  pyvcp.units_2.legend1    [PROBE]MACHINE_UNITS
+
+
+
 # ---------- Disable invisible buttons that keep probe buttons in a grid ----------
 
 setp  pyvcp.blank_1.disable    1
 setp  pyvcp.blank_2.disable    1
 setp  pyvcp.blank_3.disable    1
+setp  pyvcp.blank_4.disable    1
+setp  pyvcp.blank_5.disable    1
+setp  pyvcp.blank_6.disable    1
+
+
+
+
 
 

@@ -124,6 +124,9 @@ DEV_MSG = 0
 
 # Time delay in ms for debouncing probe switch. Try to keep the value as low as possible. Recommended values between 2 and 20 ms.
 DEBOUNCE_TIME = 10
+
+# Machine units (0 = mm, 1 = inches)
+MACHINE_UNITS = 0
 ```
 
 ### 3) Edit your POSTGUI HAL

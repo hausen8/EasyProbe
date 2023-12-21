@@ -11,72 +11,84 @@
         <!-- Beginning of probe tab -->
         <vbox>
             <hbox>
-                <button width="5" text="G54" halpin="g54" disable_pin="true" />
-                <button width="5" text="G55" halpin="g55" disable_pin="true" />
-                <button width="5" text="G56" halpin="g56" disable_pin="true" />
+                <button text="G54" width="6" padx="10" halpin="g54" disable_pin="true" />
+                <button text="G55" width="6" padx="10" halpin="g55" disable_pin="true" />
+                <button text="G56" width="6" padx="10" halpin="g56" disable_pin="true" />
             </hbox>
             <hbox>
-                <button width="5" text="G57" halpin="g57" disable_pin="true" />
-                <button width="5" text="G58" halpin="g58" disable_pin="true" />
-                <button width="5" text="G59" halpin="g59" disable_pin="true" />
+                <button text="G57" width="6" padx="10" halpin="g57" disable_pin="true" />
+                <button text="G58" width="6" padx="10" halpin="g58" disable_pin="true" />
+                <button text="G59" width="6" padx="10" halpin="g59" disable_pin="true" />
             </hbox>
             <hbox>
-                <button width="5" text="G59.1" halpin="g591" disable_pin="true" />
-                <button width="5" text="G59.2" halpin="g592" disable_pin="true" />
-                <button width="5" text="G59.3" halpin="g593" disable_pin="true" />
+                <button text="G59.1" width="6" padx="10" halpin="g591" disable_pin="true" />
+                <button text="G59.2" width="6" padx="10" halpin="g592" disable_pin="true" />
+                <button text="G59.3" width="6" padx="10" halpin="g593" disable_pin="true" />
             </hbox>
-            <label font="Helvetica, 12" text=" " />
+            <label font="('', 13)" text=" " />
             <hbox>
-                <button width="5" text="P0 X0" halpin="p0x0" disable_pin="true" />
-                <button width="5" text="P0 Y0" halpin="p0y0" disable_pin="true" />
-                <button width="5" text="P0 Z0" halpin="p0z0" disable_pin="true" />
+                <button text="Tool 1" width="6" padx="10" halpin="tool1" disable_pin="true" />
+                <button text="Tool 2" width="6" padx="10" halpin="tool2" disable_pin="true" />
+                <button text="Tool 3" width="6" padx="10" halpin="tool3" disable_pin="true" />
             </hbox>
-            <label font="Helvetica, 12" text=" " />
+            <label font="('', 13)" text=" " />
             <hbox>
-                <button width="5" text="Tool 1" halpin="tool1" disable_pin="true" />
-                <button width="5" text="Tool 2" halpin="tool2" disable_pin="true" />
-                <button width="5" text="Tool 3" halpin="tool3" disable_pin="true" />
-            </hbox>
-            <label font="Helvetica, 12" text=" " />
-            <hbox>
-                <label text="Diameter" width="10" />
+                <label text="Diameter" width="11" />
                 <spinbox width="10" min_="0" max_="100" initval="25" param_pin="1" format="2.3f" halpin="probe_diameter" />
-                <label text="mm" />
+                <multilabel halpin="units_1">
+                  <legends>["mm", "in"]</legends>
+                </multilabel>
             </hbox>
-            <label font="Helvetica, 1" text=" " />
+            <label font="('', 1)" text=" " />
             <hbox>
-                <label text="Zero/Offset" width="10" />
+                <label text="Zero/Offset" width="11" />
                 <spinbox width="10" min_="-1000" max_="1000" initval="0" param_pin="1" format="2.3f" halpin="probe_offset" />
-                <label text="mm" />
+                <multilabel halpin="units_2">
+                  <legends>["mm", "in"]</legends>
+                </multilabel>
             </hbox>
-            <label font="Helvetica, 12" text=" " />
+            <label text="Press Enter to apply new Values!" width="24" pady="6" />
+            <label font="('', 10)" text=" " />
             <hbox>
-                <button width="2" height="2" padx="10" text="" halpin="blank_1" relief="flat" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="Y↑" halpin="probe_y" disable_pin="true" />
+                <button font="('easyicons', 25)" text="A" padx="2" pady="2" halpin="blank_1" relief="flat" disable_pin="true" />
+                <button font="('easyicons', 25)" text="B" padx="2" pady="2" halpin="probe_y" disable_pin="true" />
+                <button font="('easyicons', 25)" text="A" padx="2" pady="2" halpin="blank_2" relief="flat" disable_pin="true" />
+                <button font="('easyicons', 25)" text="A" padx="2" pady="2" halpin="blank_3" relief="flat" disable_pin="true" />
+                <button font="('easyicons', 25)" text="E" padx="2" pady="2" halpin="midpoint" disable_pin="true" />
             </hbox>
             <hbox>
-                <button width="2" height="2" padx="10" text="←X" halpin="probe_minus_x" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="O" halpin="probe_hole" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="X→" halpin="probe_x" disable_pin="true" />
+                <button font="('easyicons', 25)" text="F" padx="2" pady="2" halpin="probe_minus_x" disable_pin="true" />
+                <button font="('easyicons', 25)" text="G" padx="2" pady="2" halpin="probe_hole" disable_pin="true" />
+                <button font="('easyicons', 25)" text="H" padx="2" pady="2" halpin="probe_x" disable_pin="true" />
+                <button font="('easyicons', 25)" text="A" padx="2" pady="2" halpin="blank_4" relief="flat" disable_pin="true" />
+                <button font="('easyicons', 25)" text="J" padx="2" pady="2" halpin="rotation" disable_pin="true" />
             </hbox>
             <hbox>
-                <button width="2" height="2" padx="10" text="" halpin="blank_2" relief="flat" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="Y↓" halpin="probe_minus_y" disable_pin="true" />
-                <button width="3" height="2" padx="23" text="" halpin="blank_3" relief="flat" disable_pin="true" />
-                <button width="2" height="2" padx="10" text="-Z" halpin="probe_minus_z" disable_pin="true" />
+                <button font="('easyicons', 25)" text="A" padx="2" pady="2" halpin="blank_5" relief="flat" disable_pin="true" />
+                <button font="('easyicons', 25)" text="L" padx="2" pady="2" halpin="probe_minus_y" disable_pin="true" />
+                <button font="('easyicons', 25)" text="A" padx="2" pady="2" halpin="blank_6" relief="flat" disable_pin="true" />
+                <button font="('easyicons', 25)" text="N" padx="2" pady="2" halpin="probe_minus_z" disable_pin="true" />
+                <button font="('easyicons', 25)" text="O" padx="2" pady="2" halpin="distance" disable_pin="true" />
             </hbox>
-            <label font="Helvetica, 12" text=" " />
+            <label font="('', 13)" text=" " />
             <hbox>
-                <checkbutton width="8" halpin="act_calib" text="Activate " />
+                <button font="('easyicons', 8)" text="0" padx="2" halpin="p0x0" disable_pin="true" />
+                <button font="('easyicons', 8)" text="1" padx="2" halpin="p0y0" disable_pin="true" />
+                <button font="('easyicons', 8)" text="2" padx="2" halpin="p0z0" disable_pin="true" />
+                <button font="('easyicons', 8)" text="3" padx="2" halpin="p0r0" disable_pin="true" />
+            </hbox>
+            <label font="('', 13)" text=" " />
+            <hbox>
+                <checkbutton text="Activate " width="9" halpin="act_calib" />
                 <button text="Calibration" halpin="probe_calib" disable_pin="true" />
             </hbox>
-            <label font="Helvetica, 10" text=" " />
+            <label font="('', 11)" text=" " />
             <hbox>
-                <label text="Probe Signal" width="11" />
+                <label text="Probe Signal" width="12" />
                 <rectled width="25" height="25" on_color="#ff3000" off_color="#80b000" halpin="probe_led" />
             </hbox>
             <hbox>
-                <label text="Spindle Inhibit" width="11" />
+                <label text="Spindle Inhibit" width="12" />
                 <rectled width="25" height="25" on_color="#ff3000" off_color="#80b000" halpin="spindle-inhibit" />
             </hbox>
         </vbox>
