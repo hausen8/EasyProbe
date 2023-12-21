@@ -2,8 +2,6 @@
 
 [easy]probe is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, two hal files and a folder with some macros, it should work regardless of your LinuxCNC version.
 
-![easy probe screenshot](https://github.com/hausen8/EasyProbe/blob/v1.2/manuals/Easy_Probe_screenshot.png)
-
 ### 1) Copy files
 
 Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME):
@@ -13,6 +11,19 @@ Copy the following content to your machine configuration folder (typically under
 Probe_panel.xml
 Probe_postgui.hal
 Probe_preload.hal
+easyicons.ttf
+```
+
+Right click easyicons.ttf, choose "Open with font viewer" and click on "Install" to install the font. Open a terminal and enter
+
+```
+fc-cache -f -v
+```
+
+to rebuild your fonts cache. You can check if easyfonts.ttf was installed properly by entering
+
+```
+fc-list | grep "easyicons"
 ```
 
 ### 2) Edit your INI
@@ -149,8 +160,7 @@ probetool-is-on
 
 ### HISTORY
 
-- **v1.3**: Removed section "Switching backslash values" in Probe_postgui.hal.
-- **v1.2**: Minor changes in macros. Read changelog file in macro folder for more information.
+- **v1.2**: Added function to calculate backslash independently from INI values.
 - **v1.1**: Removed function to disable all buttons when a program is running due to a problem with pushed buttons remaining in high state after the program started. Added a spindle inhibit function while a probe tool is selected with M6. Some minor changes in macros. Read changelog file in macro folder for more information.
 - **v1.0**: Initial release
 
