@@ -163,7 +163,8 @@ probetool-is-on
 
 ### HISTORY
 
-- **v1.2**: Added function to calculate backslash independently from INI values.
+- **v2.0**: Major update with new probe functions (width/midpoint, rotation and measuring)
+- **v1.2**: Added function to calculate backslash independently from INI values
 - **v1.1**: Removed function to disable all buttons when a program is running due to a problem with pushed buttons remaining in high state after the program started. Added a spindle inhibit function while a probe tool is selected with M6. Some minor changes in macros. Read changelog file in macro folder for more information.
 - **v1.0**: Initial release
 
