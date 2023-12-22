@@ -4,14 +4,15 @@
 
 ### 1) Copy files
 
-Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME):
+Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME). The "manuals" folder is optional and not required to run the panel:
 
 ```
 /macros
+/manuals
+easyicons.ttf
 Probe_panel.xml
 Probe_postgui.hal
 Probe_preload.hal
-easyicons.ttf
 ```
 
 Right click easyicons.ttf, choose "Open with font viewer" and click on "Install" to install the font. Open a terminal and enter
@@ -56,7 +57,7 @@ HALFILE = Probe_preload.hal
 POSTGUI_HALFILE = Probe_postgui.hal
 ```
 
-*Note: When TWOPASS is activated, realtime components can not only be loaded in the main hal file but in any other hal file, too. This allows us to offer a hal file with all required realtime components for Probe_panel so there is no need for you to edit your machine hal file.*
+*Note: When TWOPASS is activated, realtime components can not only be loaded in the main hal file but in any other hal file, too. This allows us to offer a hal file with all required realtime components for [easy]probe so there is no need for you to edit your machine hal file.*
 
 *Note: LinuxCNC allows not more than one postgui hal file called from the ini file. If you already have a postgui hal file, copy all content from the Probe_postgui.hal to your postgui.hal.*
 
