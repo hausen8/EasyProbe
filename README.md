@@ -147,17 +147,6 @@ Open LinuxCNC -> File -> Tooledit or open your tool.tbl file in any text editor 
 T99 P99 D2 ;
 ```
 
-### 5) Fine tune your configuration
-
-If you for example want to automatically activate a wireless probe tool, there are 4 HAL pins that you can use. While the first 3 only switch to high when the appropriate probe tool is selected, the 4th one switches to high when any of these probe tools is selected.
-
-```
-probetool-1-on
-probetool-2-on
-probetool-3-on
-probetool-is-on
-```
-
 ### HISTORY
 
 - **v2.0**: Major update with new probe functions (width/midpoint, rotation and measuring)
