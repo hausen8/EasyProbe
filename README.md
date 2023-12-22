@@ -2,6 +2,8 @@
 
 [easy]probe is a simple probe add-in for the LinuxCNC Axis UI. Since it is not more than a PyVCP panel, two hal files and a folder with some macros, it should work regardless of your LinuxCNC version.
 
+![Screenshot](/manuals/Easy_Probe_screenshot.png)
+
 ### 1) Copy files
 
 Copy the following content to your machine configuration folder (typically under USERNAME/linuxcnc/configs/CONFIG_NAME). The "manuals" folder is optional and not required to run the panel:
