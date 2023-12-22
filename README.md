@@ -15,16 +15,10 @@ Probe_postgui.hal
 Probe_preload.hal
 ```
 
-Right click easyicons.ttf, choose "Open with font viewer" and click on "Install" to install the font. Open a terminal and enter
+Right click easyicons.ttf, choose "Open with font viewer" and click on "Install" to install the font. Open a terminal and enter the following command to rebuild your fonts cache:
 
 ```
 fc-cache -f -v
-```
-
-to rebuild your fonts cache. You can check if easyicons.ttf is installed properly by entering
-
-```
-fc-list | grep "easyicons"
 ```
 
 ### 2) Edit your INI
