@@ -21,7 +21,7 @@ Right click easyicons.ttf, choose "Open with font viewer" and click on "Install"
 fc-cache -f -v
 ```
 
-to rebuild your fonts cache. You can check if easyfonts.ttf is installed properly by entering
+to rebuild your fonts cache. You can check if easyicons.ttf is installed properly by entering
 
 ```
 fc-list | grep "easyicons"
