@@ -117,8 +117,8 @@ net   y-backlash               motion.analog-out-01         =>    ini.1.backlash
 
 
 # ---------- Set machine Units ----------
-setp  pyvcp.units_1.legend1    [PROBE]MACHINE_UNITS
-setp  pyvcp.units_2.legend1    [PROBE]MACHINE_UNITS
+setp  pyvcp.units_1.legend1    0
+setp  pyvcp.units_2.legend1    0
 
 
 
